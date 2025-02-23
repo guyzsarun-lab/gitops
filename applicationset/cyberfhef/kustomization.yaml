@@ -4,7 +4,7 @@ resources:
 - ../base
 namePrefix: cyberchef-
 images:
-- name: ghcr.io/guyzsarun/base
+- name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/guyzsarun/utils
   newTag: v10.18.6
 commonLabels:
