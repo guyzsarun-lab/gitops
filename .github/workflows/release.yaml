@@ -8,22 +8,27 @@ on:
 
 jobs:
   get-version:
+    outputs:
+      version: ${{ steps.extract_version.outputs.version }}
+      application_name: ${{ steps.extract_version.outputs.application_name }}
     runs-on: ubuntu-latest
     steps:
       - name: parse application name and version
         id: extract_version
         run: |
           TAG=${GITHUB_REF_NAME}
+
           APP_NAME=${TAG%-*}
           VERSION=${TAG##*-}
           echo "application_name=$APP_NAME" >> $GITHUB_ENV
           echo "version=$VERSION" >> $GITHUB_ENV
 
   docker-build:
+    needs: get-version
     uses: ./.github/workflows/reusable-docker-build.yaml
     with:
-      path: applicationset/${{ env.application_name }}
-      version: ${{ env.version }}
+      path: applicationset/${{ needs.get-version.outputs.application_name }}
+      version: ${{ needs.get-version.outputs.version }}
 
 
   # update-version:
