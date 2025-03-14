@@ -1,0 +1,194 @@
+pageInfo:
+  title: HomeLab
+  footerText: created by guyzsarun, 2024
+appConfig:
+  theme: dashy-docs
+  webSearch:
+    searchEngine: google
+  preventLocalSave: true
+  preventWriteToDisk: true
+  disableConfiguration: true
+sections:
+- name: Today
+  widgets:
+  - type: clock
+    options:
+      timeZone: Asia/Bangkok
+      format: en-GB
+      hideDate: false
+  - type: joke
+  - type: weather
+    options:
+      apiKey: VUE_APP_WEATHER_API_KEY
+      city: Bangkok
+      units: metric
+      hideDetails: false
+  - type: exchange-rates
+    options:
+      apiKey: VUE_APP_EXCHANGE_RATES_API_KEY
+      inputCurrency: THB
+      outputCurrencies:
+        - CHF
+        - USD
+        - EUR
+        - JPY
+
+
+- name: Administration
+  displayData:
+    cols: 2
+  items:
+  - title: ProxmoxVE
+    description: Virtualization platform
+    icon: hl-proxmox
+    url: 'https://ve.proxmox.local:8006'
+  widgets:
+  - type: iframe
+    useProxy: true
+    options:
+      url: https://k8s.proxmox.local/grafana/public-dashboards/cfe63dcb56074e329e3fdcbc594ca902?orgId=1&viewPanel=4&kiosk&refresh=5m
+      frameHeight: 500
+      id: 0_765_iframe
+
+- name: Applications
+  displayData:
+    collapsed: false
+    rows: 1
+  items:
+  - title: DevOps Toolchain
+    description: Summary Page of DevOps tools
+    icon: hl-kubernetes
+    url: https://gateway.proxmox.local/toolchain/
+  - title: CyberChef
+    description: Utility tool for encryption, encoding, compression and data analysis
+    icon: '🛠️'
+    url: https://gateway.proxmox.local/cyberchef/
+  - title: HomeAssistant
+    description: Home Assistant automation
+    icon: 'hl-home-assistant-alt'
+    url: http://ha.proxmox.local:8123/
+  - title: Maybe
+    description: Maybe Finance
+    icon: 'fab fa-monero'
+    url: 'https://maybe.proxmox.local'
+  - title: NextCloud
+    description: NextCloud File Sharing
+    icon: 'hl-nextcloud-white'
+    url: https://nextcloud.proxmox.local/
+
+- name: Monitoring
+  displayData:
+    cols: 2
+  items:
+  - title: Prometheus
+    description: System Statistics Aggregation with PromQL
+    icon: hl-prometheus
+    url: https://k8s.proxmox.local/prometheus/graph
+  - title: Grafana
+    description: Data visualization and Dashboards.
+    icon: hl-grafana
+    url: https://k8s.proxmox.local/grafana/
+  - title: Elastic
+    description: Distributed, RESTful search and analytics engine
+    icon: hl-elastic
+    url: https://k8s.proxmox.local/kibana/app/home
+  - title: Kiali
+    description: Service mesh observability
+    icon: kiali.png
+    url: https://k8s.proxmox.local/kiali
+  - title: Jaeger
+    description: Distributed tracing system
+    icon: jaeger.png
+    url: https://k8s.proxmox.local/jaeger
+
+- name: Utilities
+  displayData:
+    collapsed: false
+    rows: 1
+  items:
+  - title: ArgoCD
+    description: GitOps continuous delivery tool for Kubernetes
+    icon: hl-argocd
+    url: https://argo.proxmox.local
+  - title: Keycloak
+    description: Open Source Identity and Access Management
+    icon: hl-keycloak
+    url: https://k8s.proxmox.local/keycloak/
+  - title: Harbor
+    description: Image registry
+    icon: hl-harbor
+    url: https://harbor.proxmox.local/
+  - title: Vault
+    description: Secret Management
+    icon: hl-vault-light
+    url: https://vault.proxmox.local/ui/vault/dashboard
+
+- name: Networking
+  items:
+  - title: Kong API Gateway
+    description: API Gateway and Microservices Management Layer
+    icon: kong.png
+    url: http://gateway.proxmox.local:8002/
+  - title: OPNsense
+    description: Firewall and Router
+    icon: hl-opnsense
+    url: https://opnsense.proxmox.local/
+- name: Storage
+  items:
+  - title: MinIO
+    description: S3 Object storage server
+    icon: hl-minio-light
+    url: https://minio.proxmox.local/login
+  - title: NFS Server
+    description: Network File System
+    icon: si-files
+
+- name: External Services
+  displayData:
+    collapsed: false
+    itemCountX: 1
+  items:
+  - title: Zerotier
+    description: Secure networks between devices
+    icon: zerotier.png
+    statusCheck: true
+    url: https://my.zerotier.com/
+  - title: IaC Repository
+    description: Homeserver IaC repository
+    icon: hl-github-light
+    url: https://github.com/guyzsarun-lab
+  - title: GitOps Repository
+    description: Homeserver Application repository
+    icon: hl-github-light
+    url: https://github.com/guyzsarun-lab/gitops
+
+- name: Cloud Console
+  displayData:
+    collapsed: false
+    itemCountX: 1
+  items:
+  - title: Terraform Cloud
+    icon: hl-terraform
+    statusCheck: true
+    url: https://app.terraform.io/app/organizations
+  - title: AWS Portal
+    icon: si-amazonaws
+    statusCheck: true
+    url: https://ap-southeast-1.console.aws.amazon.com/console/home?region=ap-southeast-1
+  - title: Google Cloud
+    icon: google-cloud.png
+    url: https://console.cloud.google.com/
+    statusCheck: true
+
+
+- name: Misc
+  displayData:
+    collapsed: true
+    cols: 1
+  widgets:
+  - type: public-ip
+
+  - type: code-stats
+    options:
+      username: guyzsarun
+
