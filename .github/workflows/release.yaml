@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - '*'
-  workflow_dispatch:
 
 jobs:
   get-version:
@@ -23,21 +22,21 @@ jobs:
           echo "application_name=$APP_NAME" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-  # docker-build:
-  #   permissions:
-  #     contents: read
-  #     packages: write
-  #   needs: get-version
-  #   uses: ./.github/workflows/reusable-docker-build.yaml
-  #   with:
-  #     path: applicationset/${{ needs.get-version.outputs.application_name }}
-  #     version: ${{ needs.get-version.outputs.version }}
-  #     push: true
-  #     tag-name: ${{ needs.get-version.outputs.application_name }}
+  docker-build:
+    permissions:
+      contents: read
+      packages: write
+    needs: get-version
+    uses: ./.github/workflows/reusable-docker-build.yaml
+    with:
+      path: applicationset/${{ needs.get-version.outputs.application_name }}
+      version: ${{ needs.get-version.outputs.version }}
+      push: true
+      tag-name: ${{ needs.get-version.outputs.application_name }}
 
   update-version:
     needs:
-      # - docker-build
+      - docker-build
       - get-version
     runs-on: ubuntu-latest
     permissions:
