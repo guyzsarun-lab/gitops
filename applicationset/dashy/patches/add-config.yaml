@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        volumeMounts:
+        - name: app-config
+          mountPath: /app/user-data/conf.yml
+          subPath: conf.yml
+        ports:
+        - $patch: replace
+        - containerPort: 8080
+      volumes:
+        - name: app-config
+          configMap:
+            name: config
