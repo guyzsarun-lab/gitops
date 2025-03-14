@@ -4,8 +4,8 @@ resources:
 - ../base
 namePrefix: devops-toolchain-
 images:
-- name: ghcr.io/guyzsarun/base
-  newName: ghcr.io/guyzsarun/toolchain
-  newTag: 0.0.1
+- name: ghcr.io/guyzsarun-lab/base
+  newName: ghcr.io/guyzsarun-lab/devops_toolchain
+  newTag: 0.1.0
 commonLabels:
   app: devops-toolchain
