@@ -24,6 +24,9 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   docker-build:
+    permissions:
+      contents: read
+      packages: write
     needs: get-version
     uses: ./.github/workflows/reusable-docker-build.yaml
     with:
