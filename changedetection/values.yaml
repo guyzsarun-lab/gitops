@@ -1,0 +1,57 @@
+changedetection:
+  image:
+    repository: ghcr.io/dgtlmoon/changedetection.io
+    tag: "latest"
+
+  environmentVariables:
+    - name: PORT
+      value: "5000"
+    - name: LOGGER_LEVEL
+      value: "INFO"
+    # Default port is 3000 on the playwright sidecar
+    - name: PLAYWRIGHT_DRIVER_URL
+      value: ws://localhost:3000
+
+  persistence:
+    enabled: true
+    volumeClaimName: changedetection-storage
+
+  resources:
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+playwrightSidecar:
+  image:
+    repository: dgtlmoon/sockpuppetbrowser
+    tag: latest
+
+  environmentVariables:
+  - name: SCREEN_WIDTH
+    value: "800"
+  - name: SCREEN_HEIGHT
+    value: "600"
+  - name: SCREEN_DEPTH
+    value: "16"
+  - name: MAX_CONCURRENT_CHROME_PROCESSES
+    value: "5"
+  - name: CONNECTION_TIMEOUT
+    value: "300000"
+  - name: DEFAULT_BLOCK_ADS
+    value: "true"
+
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  type: ClusterIP
+  port: 5000

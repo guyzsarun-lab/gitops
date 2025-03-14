@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: application
+  name: application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - image: ghcr.io/guyzsarun-lab/base:latest
+        name: application
+        resources:
+          limits:
+            memory: "60Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: image-pull-secret

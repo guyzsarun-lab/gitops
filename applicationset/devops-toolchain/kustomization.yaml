@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../base
+namePrefix: devops-toolchain-
+images:
+- name: ghcr.io/guyzsarun/base
+  newName: ghcr.io/guyzsarun/toolchain
+  newTag: 0.1.0
+commonLabels:
+  app: devops-toolchain
