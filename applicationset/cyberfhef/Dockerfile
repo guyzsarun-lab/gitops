@@ -1,5 +1,5 @@
 FROM alpine:3.19 as BUILDER
-ARG VERSION=v10.6.0
+ARG VERSION=v10.19.4
 WORKDIR /app
 
 RUN wget https://github.com/gchq/CyberChef/releases/download/${VERSION}/CyberChef_${VERSION}.zip && \
