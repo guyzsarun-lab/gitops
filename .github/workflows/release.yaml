@@ -10,26 +10,20 @@ jobs:
   get-version:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract version and application name from tag
+      - name: parse application name and version
         id: extract_version
         run: |
-          # Get the tag from GITHUB_REF_NAME
           TAG=${GITHUB_REF_NAME}
-
-          # Parse the tag
           APP_NAME=${TAG%-*}
           VERSION=${TAG##*-}
           echo "application_name=$APP_NAME" >> $GITHUB_ENV
           echo "version=$VERSION" >> $GITHUB_ENV
 
-      - name: Output extracted values
-        run: |
-          echo "Application Name: $APPLICATION_NAME"
-          echo "Version: $VERSION"
-  # docker-build:
-  #   uses: ./.github/workflows/reusable-docker-build.yaml
-  #   with:
-  #     path: applicationset/cyberchef
+  docker-build:
+    uses: ./.github/workflows/reusable-docker-build.yaml
+    with:
+      path: applicationset/${{ env.application_name }}
+      version: ${{ env.version }}
 
 
   # update-version:
