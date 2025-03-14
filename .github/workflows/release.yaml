@@ -1,0 +1,60 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract version and application name from tag
+        id: extract_version
+        run: |
+          TAG_NAME=${GITHUB_REF##*/}
+          APPLICATION_NAME=$(echo "$TAG_NAME" | cut -d'-' -f1)
+          VERSION=$(echo "$TAG_NAME" | cut -d'-' -f2)
+          echo "application_name=$APPLICATION_NAME" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_ENV
+
+      - name: Output extracted values
+        run: |
+          echo "Application Name: $APPLICATION_NAME"
+          echo "Version: $VERSION"
+  # docker-build:
+  #   uses: ./.github/workflows/reusable-docker-build.yaml
+  #   with:
+  #     path: applicationset/cyberchef
+
+
+  # update-version:
+  #   if: github.event.inputs.release == 'true'
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write
+  #   needs: build-image
+  #   steps:
+  #   - name: Check out Git repository
+  #     uses: actions/checkout@v4
+
+  #   - name: Update Version
+  #     run: |
+  #       sed -i "s/\(newTag:\s*\).*/\1${{ github.event.inputs.version }}/" ${{ github.event.inputs.project }}/kustomization.yaml
+  #       cat ${{ github.event.inputs.project }}/kustomization.yaml
+
+
+  #   - name: Commit files
+  #     run: |
+  #       git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  #       git config --local user.name "github-actions[bot]"
+  #       cat ${{ github.event.inputs.project }}/kustomization.yaml
+  #       git add .
+  #       git commit -m "Update ${{ github.event.inputs.project }} to version ${{ github.event.inputs.version }}"
+
+  #   - name: Push changes
+  #     uses: ad-m/github-push-action@master
+  #     with:
+  #       github_token: ${{ secrets.GITHUB_TOKEN }}
+  #       branch: ${{ github.ref }}
