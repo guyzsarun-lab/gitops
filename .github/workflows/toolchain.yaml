@@ -1,4 +1,4 @@
-name: devops-toolchain
+name: toolchain
 
 on:
   workflow_dispatch:
@@ -6,10 +6,10 @@ on:
     branches:
       - main
     paths:
-      - applicationset/devops_toolchain/**
+      - applicationset/toolchain/**
 
 jobs:
   docker-build:
     uses: ./.github/workflows/reusable-docker-build.yaml
     with:
-      path: applicationset/devops_toolchain
+      path: applicationset/toolchain
