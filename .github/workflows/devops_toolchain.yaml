@@ -6,10 +6,10 @@ on:
     branches:
       - main
     paths:
-      - applicationset/devops-toolchain/**
+      - applicationset/devops_toolchain/**
 
 jobs:
   docker-build:
     uses: ./.github/workflows/reusable-docker-build.yaml
     with:
-      path: applicationset/devops-toolchain
+      path: applicationset/devops_toolchain
