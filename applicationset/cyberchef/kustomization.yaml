@@ -6,6 +6,6 @@ namePrefix: cyberchef-
 images:
 - name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/guyzsarun-lab/cyberchef
-  newTag: v10.18.6
+  newTag: v10.19.4
 commonLabels:
   app: cyberchef
