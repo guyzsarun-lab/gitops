@@ -2,6 +2,10 @@ name: Reusable Docker Build
 on:
   workflow_call:
     inputs:
+      tag-name:
+        required: false
+        type: string
+        default: 'docker-build'
       path:
         required: true
         type: string
@@ -37,5 +41,5 @@ jobs:
           context: ${{ inputs.path }}
           file: ${{ inputs.path}}/Dockerfile
           push: ${{ inputs.push }}
-          tags: "ghcr.io/guyzsarun-lab/${{ inputs.path }}:${{ inputs.version }}"
+          tags: "ghcr.io/guyzsarun-lab/${{ inputs.tag-name }}:${{ inputs.version }}"
           labels: "org.opencontainers.image.source=https://github.com/guyzsarun-lab/gitops"
