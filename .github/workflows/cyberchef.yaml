@@ -7,6 +7,6 @@ on:
 
 jobs:
   docker-build:
-    uses: ./.github/workflows/reusable-docker-build.yaml
+    uses: ./.github/workflows/templates/reusable-docker-build.yaml
     with:
       path: applicationset/cyberfhef
