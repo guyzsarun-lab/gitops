@@ -20,8 +20,8 @@ jobs:
 
           APP_NAME=${TAG%-*}
           VERSION=${TAG##*-}
-          echo "application_name=$APP_NAME" >> $GITHUB_ENV
-          echo "version=$VERSION" >> $GITHUB_ENV
+          echo "application_name=$APP_NAME" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   docker-build:
     needs: get-version
