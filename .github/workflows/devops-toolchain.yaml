@@ -1,6 +1,7 @@
 name: devops-toolchain
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - applicationset/devops-toolchain/**
