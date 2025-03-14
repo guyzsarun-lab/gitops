@@ -1,0 +1,12 @@
+name: cyberchef
+
+on:
+  push:
+    paths:
+      - applicationset/cyberchef/**
+
+jobs:
+  docker-build:
+    uses: ./.github/workflows/templates/reusable-docker-build.yaml
+    with:
+      path: applicationset/cyberfhef

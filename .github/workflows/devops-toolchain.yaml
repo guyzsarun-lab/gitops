@@ -1,0 +1,12 @@
+name: devops-toolchain
+
+on:
+  push:
+    paths:
+      - applicationset/devops-toolchain/**
+
+jobs:
+  docker-build:
+    uses: ./.github/workflows/templates/reusable-docker-build.yaml
+    with:
+      path: applicationset/devops-toolchain
