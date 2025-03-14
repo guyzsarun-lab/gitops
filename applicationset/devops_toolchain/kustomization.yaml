@@ -6,6 +6,6 @@ namePrefix: devops-toolchain-
 images:
 - name: ghcr.io/guyzsarun/base
   newName: ghcr.io/guyzsarun/toolchain
-  newTag: 0.1.0
+  newTag: 0.0.1
 commonLabels:
   app: devops-toolchain
