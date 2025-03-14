@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: toolchain-vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - gateway.proxmox.local
+  http:
+  - match:
+    - uri:
+        prefix: /toolchain
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: toolchain-application.default.svc.cluster.local
+        port:
+          number: 3000
