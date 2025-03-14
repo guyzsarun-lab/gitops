@@ -5,6 +5,13 @@ on:
       path:
         required: true
         type: string
+      push:
+        required: false
+        type: boolean
+        default: false
+      version:
+        required: false
+        type: string
 
 jobs:
   build:
@@ -16,6 +23,10 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
+          build-args: |
+            VERSION=${{ inputs.version }}
           context: ${{ inputs.path }}
           file: ${{ inputs.path}}/Dockerfile
-          push: false
+          push: ${{ inputs.push }}
+          tags: "ghcr.io/guyzsarun-lab/${{ inputs.path }}:${{ inputs.version }}"
+          labels: "org.opencontainers.image.source=https://github.com/guyzsarun-lab/gitops"
