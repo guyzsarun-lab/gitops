@@ -9,4 +9,4 @@ jobs:
   docker-build:
     uses: ./.github/workflows/reusable-docker-build.yaml
     with:
-      path: applicationset/cyberfhef
+      path: applicationset/cyberchef
