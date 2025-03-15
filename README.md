@@ -9,8 +9,9 @@
 | __toolchain__ | [![toolchain](https://github.com/guyzsarun-lab/gitops/actions/workflows/toolchain.yaml/badge.svg)](https://github.com/guyzsarun-lab/gitops/actions/workflows/toolchain.yaml) | DevOps Toolchain |
 | __cyberchef__ | [![cyberchef](https://github.com/guyzsarun-lab/gitops/actions/workflows/cyberchef.yaml/badge.svg)](https://github.com/guyzsarun-lab/gitops/actions/workflows/cyberchef.yaml) | Selfhosted [CyberChef](https://github.com/gchq/CyberChef/) |
 
-
 ## Project Structure
+
+This repository follows the GitOps workflow to manage Kubernetes deployments. All changes to the cluster are performed by updating this repository, and the changes are automatically applied using [ArgoCD](https://argo-cd.readthedocs.io/) 
 
 ```markdown
 ├── .github             # github action workflows
