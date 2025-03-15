@@ -24,3 +24,7 @@
 ## Deployment
 
 To deploy an application, you can tag the repository follows the naming convention: `<application-name>-<version>`. This tag triggers the deployment process via GitHub Actions.
+
+- Container image will be pushed to GitHub Container Registry.
+- Github Action will update the version in the `kustomization.yaml` file.
+- ArgoCD will sync the application with the new version.
