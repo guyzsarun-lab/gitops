@@ -10,7 +10,7 @@ spec:
   project: {{ .Values.bootstrap.project }}
   destination:
     namespace: {{ .Values.fluentbit.namespace }}
-    server: {{ .Values.spec.destination.server }}
+    server: {{ .Values.bootstrap.destination.server }}
   sources:
   - repoURL: https://fluent.github.io/helm-charts
     chart: fluent-bit
