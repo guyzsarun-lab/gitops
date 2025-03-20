@@ -1,0 +1,13 @@
+bootstrap:
+  namespace: argocd
+  project: cluster-bootstrap
+
+addons:
+  kiali: true
+  jaeger: true
+  keycloak: true
+  fluentbit: true
+
+fluentbit:
+  namespace: kube-system
+  version: 0.48.9
