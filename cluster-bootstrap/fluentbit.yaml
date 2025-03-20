@@ -11,7 +11,7 @@ spec:
       chart: fluent-bit
       helm:
         valueFiles:
-          - "$values/cluster-bootstrap/fluentbit.yaml"
+          - "$values/cluster-bootstrap/values/fluentbit.yaml"
     - repoURL: https://github.com/guyzsarun-lab/gitops.git
       targetRevision: feature/k8s-bootstrap
       ref: values
