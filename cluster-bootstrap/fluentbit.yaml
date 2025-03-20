@@ -1,16 +1,25 @@
-config:
-  outputs: |
-    [OUTPUT]
-        Name es
-        Match kube.*
-        Host elasticsearch-master
-        Logstash_Format On
-        Retry_Limit False
-
-    [OUTPUT]
-        Name es
-        Match host.*
-        Host elasticsearch-master
-        Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentbit
+  namespace: argocd
+spec:
+  project: cluster-bootstrap
+  sources:
+    - repoURL: https://fluent.github.io/helm-charts
+      targetRevision: 0.48.9
+      chart: fluent-bit
+      helm:
+        valueFiles:
+          - "$values/cluster-bootstrap/fluentbit.yaml"
+    - repoURL: https://github.com/guyzsarun-lab/gitops.git
+      targetRevision: feature/k8s-bootstrap
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
