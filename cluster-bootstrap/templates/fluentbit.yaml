@@ -19,6 +19,6 @@ spec:
       valueFiles:
       - $values/cluster-bootstrap/templates/fluentbit.yaml
   - repoURL: https://github.com/guyzsarun-lab/gitops
-    targetRevision: HEAD
+    targetRevision: feature/k8s-bootstrap
     ref: values
 {{ end }}
