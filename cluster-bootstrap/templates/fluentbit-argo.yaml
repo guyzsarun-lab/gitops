@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluent-bit
+  name: {{ .Values.fluentbit.applicationName }}
   namespace: {{ .Values.bootstrap.namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
