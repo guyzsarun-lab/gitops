@@ -1,6 +1,8 @@
 bootstrap:
   namespace: argocd
   project: cluster-bootstrap
+  destination:
+    server: https://kubernetes.default.svc
 
 addons:
   kiali: true
