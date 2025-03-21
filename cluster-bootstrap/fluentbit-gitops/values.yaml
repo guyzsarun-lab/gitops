@@ -1,0 +1,68 @@
+fluent-bit:
+  fullnameOverride: fluentbit-gitops
+  resources:
+    limits:
+      cpu: 10m
+      memory: 40Mi
+
+  tolerations:
+  - key: "node-role.kubernetes.io/control-plane"
+    operator: "Exists"
+    effect: "NoSchedule"
+
+  config:
+    filters: |
+      [FILTER]
+          Name kubernetes
+          Match kube.*
+          Merge_Log On
+          Keep_Log Off
+          K8S-Logging.Parser On
+          K8S-Logging.Exclude On
+          Buffer_Size  1Mb
+
+      [FILTER]
+          Name           parser
+          Match          kube.*
+          Parser         nginx
+          Preserve_Key   Off
+          Reserve_Data   On
+          Key_Name       log
+
+      [FILTER]
+          Name           grep
+          Match          kube.*
+          Exclude        $kubernetes['namespace_name'] metallb-system
+          Exclude        $kubernetes['namespace_name'] argocd
+          Exclude        $kubernetes['namespace_name'] kube-system
+          Exclude        log /^(127.0.0.1|::1).*/
+          Exclude        remote /^(127.0.0.1|::1).*/
+          Exclude        path /^\/metrics.*/
+
+    outputs: |
+      #    [OUTPUT]
+      #        Name es
+      #        Match *
+      #
+      #        Host elastic-es-http.istio-system.svc.cluster.local
+      #        Port 9200
+      #        Cloud_auth elastic:s9Fd9N12eX802zUh0wq10WEq
+      #
+      #        Time_Key  @timestamp
+      #        Index fluent-bit-kube
+      #        Type  _doc
+      #
+      #        Suppress_Type_Name On
+      #        Replace_Dots On
+      #        tls.verify off
+      #        Logstash_Format off
+      #        Retry_Limit 2
+
+      [OUTPUT]
+          name   loki
+          match  *
+          labels job=fluentbit, mystream=$sub['stream'], namespace=$kubernetes['namespace_name'], pod_name=$kubernetes['pod_name']
+          auto_kubernetes_labels on
+          structured_metadata pod=$kubernetes['pod_name']
+          tenant_id foo
+          host loki.monitoring.svc.cluster.local
