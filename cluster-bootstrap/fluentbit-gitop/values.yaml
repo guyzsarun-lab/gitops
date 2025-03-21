@@ -1,19 +1,20 @@
-kind: Deployment
+fluent-bit:
+  kind: Deployment
 
-config:
-  outputs: |
-    [OUTPUT]
-        Name es
-        Match kube.*
-        Host elasticsearch-master
-        Logstash_Format On
-        Retry_Limit False
+  config:
+    outputs: |
+      [OUTPUT]
+          Name es
+          Match kube.*
+          Host elasticsearch-master
+          Logstash_Format On
+          Retry_Limit False
 
-    [OUTPUT]
-        name   loki
-        match  *
-        labels job=fluentbit, mystream=$sub['stream'], namespace=$kubernetes['namespace_name'], pod_name=$kubernetes['pod_name']
-        auto_kubernetes_labels on
-        structured_metadata pod=$kubernetes['pod_name']
-        tenant_id foo
-        host loki.monitoring.svc.cluster.local
+      [OUTPUT]
+          name   loki
+          match  *
+          labels job=fluentbit, mystream=$sub['stream'], namespace=$kubernetes['namespace_name'], pod_name=$kubernetes['pod_name']
+          auto_kubernetes_labels on
+          structured_metadata pod=$kubernetes['pod_name']
+          tenant_id foo
+          host loki.monitoring.svc.cluster.local
