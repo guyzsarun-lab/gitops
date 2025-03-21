@@ -8,9 +8,10 @@ config:
         Retry_Limit False
 
     [OUTPUT]
-        Name es
-        Match host.*
-        Host elasticsearch-master
-        Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
+        name   loki
+        match  *
+        labels job=fluentbit, mystream=$sub['stream'], namespace=$kubernetes['namespace_name'], pod_name=$kubernetes['pod_name']
+        auto_kubernetes_labels on
+        structured_metadata pod=$kubernetes['pod_name']
+        tenant_id foo
+        host loki.monitoring.svc.cluster.local
