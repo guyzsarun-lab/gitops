@@ -39,12 +39,23 @@ fluent-bit:
           Exclude        path /^\/metrics.*/
 
     outputs: |
-      [OUTPUT]
-          Name es
-          Match kube.*
-          Host elasticsearch-master
-          Logstash_Format On
-          Retry_Limit False
+      #    [OUTPUT]
+      #        Name es
+      #        Match *
+      #
+      #        Host elastic-es-http.istio-system.svc.cluster.local
+      #        Port 9200
+      #        Cloud_auth elastic:s9Fd9N12eX802zUh0wq10WEq
+      #
+      #        Time_Key  @timestamp
+      #        Index fluent-bit-kube
+      #        Type  _doc
+      #
+      #        Suppress_Type_Name On
+      #        Replace_Dots On
+      #        tls.verify off
+      #        Logstash_Format off
+      #        Retry_Limit 2
 
       [OUTPUT]
           name   loki
