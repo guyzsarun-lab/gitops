@@ -1,0 +1,21 @@
+nextcloud:
+  nextcloud:
+    host: nextcloud.proxmox.local
+    username: admin
+    password: P@ssw0rd
+    update: 0
+    trustedDomains: ['localhost','nextcloud.proxmox.local']
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+
+  internalDatabase:
+    enabled: true
+    name: nextcloud
+
+  persistence:
+    enabled: true
+    existingClaim: nextcloud-pvc
+    accessMode: ReadWriteOnce
+    size: 10Gi
