@@ -5,6 +5,7 @@ nextcloud:
     password: P@ssw0rd
     update: 0
     # If web server is not binding default port, you can define it
+    trustedDomains: ['localhost','nextcloud.promxox.local']
     containerPort: 80
     datadir: /var/www/html/data
     persistence:
