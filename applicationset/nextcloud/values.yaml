@@ -8,7 +8,7 @@ nextcloud:
   livenessProbe:
     enabled: false
   readinessProbe:
-    enabled: true
+    enabled: false
 
   internalDatabase:
     enabled: true
