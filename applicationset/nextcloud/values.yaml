@@ -19,7 +19,7 @@ nextcloud:
           'trusted_domains' => [
             0 => 'localhost',
             1 => 'nextcloud.kube.home',
-            2 => 'nextcloud.promxox.local',
+            2 => 'nextcloud.proxmox.local',
           ]
         ];
   livenessProbe:
