@@ -20,6 +20,4 @@ kiali-server:
     prometheus:
       url: "http://monitoring-kube-prometheus-prometheus.istio-system:9090"
     grafana:
-      enabled: true
-      external_url: https://k8s.proxmox.local/grafana
-      internal_url: http://monitoring-grafana.istio-system:3000
+      enabled: false
