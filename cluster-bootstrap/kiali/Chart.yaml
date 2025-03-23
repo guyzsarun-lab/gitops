@@ -5,5 +5,5 @@ version: 0.1.0
 appVersion: "1.0"
 dependencies:
 - name: kiali-server
-  version: 1.89.7
+  version: 2.7.1
   repository: https://kiali.org/helm-charts
