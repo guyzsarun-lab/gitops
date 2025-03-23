@@ -15,3 +15,7 @@ kiali-server:
         memory: "64Mi"
       limits:
         memory: "128Mi"
+
+  external_services:
+    prometheus:
+      url: "http://monitoring-kube-prometheus-prometheus.istio-system:9090"
