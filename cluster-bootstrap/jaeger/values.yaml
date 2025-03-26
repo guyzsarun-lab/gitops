@@ -4,12 +4,14 @@ jaeger:
 
   allInOne:
     enabled: true
-
   collector:
+    enabled: false
+  agent:
     enabled: false
 
   query:
     basePath: /jaeger
+
 
 
   storage:
