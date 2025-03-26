@@ -1,6 +1,16 @@
 jaeger:
+  provisionDataStore:
+    cassandra: false
+
   allInOne:
     enabled: true
+
+  collector:
+    enabled: false
+
+  query:
+    basePath: /jaeger
+
 
   storage:
     type: memory
