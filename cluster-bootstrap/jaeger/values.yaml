@@ -8,11 +8,7 @@ jaeger:
     enabled: false
   agent:
     enabled: false
-
   query:
-    basePath: /jaeger
-
-
-
+    enabled: false
   storage:
     type: memory
