@@ -1,0 +1,23 @@
+kiali-server:
+  auth:
+    openid:
+      client_id: "kiali-openid-client"
+      issuer_uri: "https://k8s.proxmox.local/keycloak/realms/keycloak-oidc"
+      insecure_skip_verify_tls: true
+      disable_rbac: true
+      scopes: ["openid","email"]
+      username_claim: "email"
+    strategy: openid
+  deployment:
+    resources:
+      requests:
+        cpu: "10m"
+        memory: "64Mi"
+      limits:
+        memory: "128Mi"
+
+  external_services:
+    prometheus:
+      url: "http://monitoring-kube-prometheus-prometheus.istio-system:9090"
+    grafana:
+      enabled: false
