@@ -4,6 +4,16 @@ jaeger:
 
   allInOne:
     enabled: true
+    extraEnv:
+      - name: QUERY_BASE_PATH
+        value: /jaeger
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
   collector:
     enabled: false
   agent:
