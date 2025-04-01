@@ -7,6 +7,10 @@ jaeger:
     extraEnv:
       - name: QUERY_BASE_PATH
         value: /jaeger
+      - name: COLLECTOR_ZIPKIN_HTTP_PORT
+        value: "9411"
+      - name: COLLECTOR_OLTP_ENABLED
+        value: "true"
     resources:
       limits:
         cpu: 100m
