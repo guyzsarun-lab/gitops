@@ -94,6 +94,3 @@ kube-prometheus-stack:
 
   alertmanager:
     enabled: false
-
-  prometheusOperator:
-    enabled: false
