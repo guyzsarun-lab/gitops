@@ -1,0 +1,28 @@
+jaeger:
+  provisionDataStore:
+    cassandra: false
+
+  allInOne:
+    enabled: true
+    extraEnv:
+      - name: QUERY_BASE_PATH
+        value: /jaeger
+      - name: COLLECTOR_ZIPKIN_HTTP_PORT
+        value: "9411"
+      - name: COLLECTOR_OLTP_ENABLED
+        value: "true"
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
+  collector:
+    enabled: false
+  agent:
+    enabled: false
+  query:
+    enabled: false
+  storage:
+    type: memory
