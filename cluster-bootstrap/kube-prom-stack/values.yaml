@@ -47,7 +47,7 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            volumeName: prometheus-pvc
+            volumeName: prometheus-pv
             accessModes: ["ReadWriteOnce"]
             resources:
               requests:
