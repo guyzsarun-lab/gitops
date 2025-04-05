@@ -95,3 +95,8 @@ kube-prometheus-stack:
 
   alertmanager:
     enabled: false
+
+  kubeProxy:
+    enabled: true
+    serviceMonitor:
+      enabled: false
