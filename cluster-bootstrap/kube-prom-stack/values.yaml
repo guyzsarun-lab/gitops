@@ -49,6 +49,16 @@ kube-prometheus-stack:
           allow_assign_grafana_admin : true
           role_attribute_path : contains(realm_access.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(realm_access.roles[*], 'admin') && 'Admin' || contains(realm_access.roles[*], 'editor') && 'Editor' || 'Viewer'
 
+  prometheusOperator:
+    prometheusConfigReloader:
+      resources:
+        requests:
+          cpu: 10m
+          memory: 50Mi
+        limits:
+          cpu: 50m
+          memory: 50Mi
+
   prometheus:
     prometheusSpec:
       routePrefix: /prometheus
@@ -70,6 +80,7 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 5Gi
+
       additionalScrapeConfigs:
         - job_name: 'proxmox-ve'
           static_configs:
@@ -121,3 +132,4 @@ kube-prometheus-stack:
     enabled: true
     serviceMonitor:
       enabled: false
+
