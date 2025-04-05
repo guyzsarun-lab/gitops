@@ -54,6 +54,14 @@ kube-prometheus-stack:
       routePrefix: /prometheus
       retention: 7d
       scrapeInterval: "120s"
+      resources:
+        limits:
+          cpu: 100m
+          memory: 500Mi
+        requests:
+          cpu: 10m
+          memory: 50Mi
+
       storageSpec:
         volumeClaimTemplate:
           spec:
