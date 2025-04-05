@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: grafana-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  mountOptions:
+  - hard
+  - nfsvers=4.1
+  nfs:
+    path: /home/devops/nfs_share/kubernetes/grafana
+    server: 172.16.0.4
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: grafana
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  volumeName: grafana-pv
+  storageClassName: grafana
