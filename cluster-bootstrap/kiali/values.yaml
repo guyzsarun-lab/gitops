@@ -18,6 +18,6 @@ kiali-server:
 
   external_services:
     prometheus:
-      url: "http://monitoring-kube-prometheus-prometheus.istio-system:9090"
+      url: "http://prometheus-operated.monitoring:9090/prometheus"
     grafana:
       enabled: false

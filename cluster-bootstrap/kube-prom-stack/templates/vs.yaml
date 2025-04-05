@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: kube-prom-stack-vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - k8s.proxmox.local
+  http:
+  - match:
+    - uri:
+        prefix: /prometheus/
+    - uri:
+        prefix: /prometheus
+    route:
+    - destination:
+        host: prometheus-operated
+        port:
+          number: 9090
+  - match:
+    - uri:
+        prefix: /grafana
+    route:
+    - destination:
+        host: kube-prom-stack-grafana
+        port:
+          number: 80
