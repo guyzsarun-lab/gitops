@@ -42,6 +42,7 @@ kube-prometheus-stack:
 
   prometheus:
     prometheusSpec:
+      externalUrl: "https://k8s.proxmox.local/prometheus"
       retention: 7d
       scrapeInterval: "120s"
       storageSpec:
