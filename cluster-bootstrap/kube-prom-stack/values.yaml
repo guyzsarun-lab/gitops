@@ -62,6 +62,12 @@ kube-prometheus-stack:
           static_configs:
             - targets:
               - 172.16.0.3:9100
+        - job_name: 'node-exporter'
+          static_configs:
+            - targets:
+              - 172.16.0.4:9100
+              labels:
+                instance: 'nas-server'
         - job_name: 'kong-gateway'
           static_configs:
             - targets: ['gateway.proxmox.local:8001']
