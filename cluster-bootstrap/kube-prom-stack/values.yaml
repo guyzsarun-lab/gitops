@@ -16,6 +16,15 @@ kube-prometheus-stack:
     initChownData:
       enabled: false
 
+    sidecar:
+      resources:
+        limits:
+          cpu: 50m
+          memory: 100Mi
+        requests:
+          cpu: 10m
+          memory: 50Mi
+
     grafana.ini:
       server:
         root_url: https://k8s.proxmox.local/grafana
