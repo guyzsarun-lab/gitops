@@ -37,7 +37,7 @@ kube-prometheus-stack:
           enabled : true
           name : Keycloak-OIDC
           client_id : grafana-client
-          cli ent_secret : 5pphI67RZcQEEcQv73R3TwBw1Ym6GNGv
+          client_secret : 5pphI67RZcQEEcQv73R3TwBw1Ym6GNGv
           scopes : openid email profile offline_access roles
           email_attribute_path : email
           login_attribute_path : username
