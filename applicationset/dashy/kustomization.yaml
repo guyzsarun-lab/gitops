@@ -6,7 +6,7 @@ namePrefix: dashy-
 images:
 - name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/guyzsarun-lab/dashy
-  newTag: 0.0.1
+  newTag: 0.0.2
 commonLabels:
   app: dashy
 patches:
