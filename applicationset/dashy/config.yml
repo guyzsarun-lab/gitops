@@ -50,35 +50,10 @@ sections:
       frameHeight: 500
       id: 0_765_iframe
 
-- name: Applications
-  displayData:
-    collapsed: false
-    rows: 1
-  items:
-  - title: DevOps Toolchain
-    description: Summary Page of DevOps tools
-    icon: hl-kubernetes
-    url: https://gateway.proxmox.local/toolchain/
-  - title: CyberChef
-    description: Utility tool for encryption, encoding, compression and data analysis
-    icon: '🛠️'
-    url: https://gateway.proxmox.local/cyberchef/
-  - title: HomeAssistant
-    description: Home Assistant automation
-    icon: 'hl-home-assistant-alt'
-    url: http://ha.proxmox.local:8123/
-  - title: Maybe
-    description: Maybe Finance
-    icon: 'fab fa-monero'
-    url: 'https://maybe.proxmox.local'
-  - title: NextCloud
-    description: NextCloud File Sharing
-    icon: 'hl-nextcloud-white'
-    url: https://nextcloud.proxmox.local/
 
 - name: Monitoring
   displayData:
-    cols: 2
+    cols: 1
   items:
   - title: Prometheus
     description: System Statistics Aggregation with PromQL
@@ -100,6 +75,44 @@ sections:
     description: Distributed tracing system
     icon: jaeger.png
     url: https://k8s.proxmox.local/jaeger
+
+- name: Applications
+  displayData:
+    collapsed: false
+    cols: 2
+  items:
+  - title: DevOps Toolchain
+    description: Summary Page of DevOps tools
+    icon: hl-kubernetes
+    url: https://gateway.proxmox.local/toolchain/
+  - title: CyberChef
+    description: Utility tool for encryption, encoding, compression and data analysis
+    icon: '🛠️'
+    url: https://gateway.proxmox.local/cyberchef/
+  - title: HomeAssistant
+    description: Home Assistant automation
+    icon: 'hl-home-assistant-alt'
+    url: http://ha.proxmox.local:8123/
+  - title: Maybe
+    description: Maybe Finance
+    icon: 'fab fa-monero'
+    url: 'https://maybe.proxmox.local'
+  - title: NextCloud
+    description: NextCloud File Sharing
+    icon: 'hl-nextcloud-white'
+    url: https://nextcloud.proxmox.local/
+  - title: ChangeDetection
+    description: Monitor website changes
+    icon: 'hl-changedetection'
+    url: https://detector.proxmox.local/
+  - title: Calibre
+    description: E-book management
+    icon: 'hl-calibre'
+    url: https://calibre.proxmox.local/
+  - title: AdventureLog
+    description: Adventure / Travel Log
+    icon: 'hl-adventure-log'
+    url: https://adventurelog.proxmox.local/
 
 - name: Utilities
   displayData:
@@ -124,11 +137,14 @@ sections:
     url: https://vault.proxmox.local/ui/vault/dashboard
 
 - name: Networking
+  displayData:
+    collapsed: false
+    rows: 1
   items:
   - title: Kong API Gateway
     description: API Gateway and Microservices Management Layer
     icon: kong.png
-    url: http://gateway.proxmox.local:8002/
+    url: http://kong-manager.proxmox.local/
   - title: OPNsense
     description: Firewall and Router
     icon: hl-opnsense
