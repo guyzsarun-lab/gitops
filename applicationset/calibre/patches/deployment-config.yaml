@@ -12,8 +12,8 @@ spec:
             memory: 256Mi
             cpu: 100m
         ports:
-        - containerPort: 8083
         - $patch: replace
+        - containerPort: 8083
         envFrom:
         - configMapRef:
             name: calibre-config
