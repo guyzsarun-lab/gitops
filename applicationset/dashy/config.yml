@@ -79,6 +79,7 @@ sections:
 - name: Applications
   displayData:
     collapsed: false
+    itemCountX: 4
     cols: 2
   items:
   - title: DevOps Toolchain
@@ -101,18 +102,18 @@ sections:
     description: NextCloud File Sharing
     icon: 'hl-nextcloud-white'
     url: https://nextcloud.proxmox.local/
-  - title: ChangeDetection
-    description: Monitor website changes
-    icon: 'hl-changedetection'
-    url: https://detector.proxmox.local/
-  - title: Calibre
-    description: E-book management
-    icon: 'hl-calibre'
-    url: https://calibre.proxmox.local/
   - title: AdventureLog
     description: Adventure / Travel Log
     icon: 'hl-adventure-log'
     url: https://adventurelog.proxmox.local/
+  - title: Calibre
+    description: E-book management
+    icon: 'hl-calibre'
+    url: https://calibre.proxmox.local/
+  - title: ChangeDetection
+    description: Monitor website changes
+    icon: 'hl-changedetection'
+    url: https://detector.proxmox.local/
 
 - name: Utilities
   displayData:
