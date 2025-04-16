@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 100m
+        ports:
+        - containerPort: 8083
+        - $patch: replace
+        envFrom:
+        - configMapRef:
+            name: calibre-config
