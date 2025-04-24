@@ -101,6 +101,10 @@ kube-prometheus-stack:
               - 172.16.0.13:9100
               labels:
                 instance: 'app-server'
+            - targets:
+              - 10.243.234.171:9100
+              labels:
+                instance: 'pi4'
 
         - job_name: 'kong-gateway'
           static_configs:
