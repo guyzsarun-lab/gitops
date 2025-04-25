@@ -102,7 +102,7 @@ kube-prometheus-stack:
               labels:
                 instance: 'app-server'
             - targets:
-              - 10.243.234.171:9100
+              - 10.243.199.158:9100
               labels:
                 instance: 'pi4'
 
