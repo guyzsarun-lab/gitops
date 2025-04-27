@@ -58,15 +58,15 @@ sections:
   - title: Prometheus
     description: System Statistics Aggregation with PromQL
     icon: hl-prometheus
-    url: https://k8s.proxmox.local/prometheus/graph
+    url: https://k8s.proxmox.local/prometheus/query
   - title: Grafana
     description: Data visualization and Dashboards.
     icon: hl-grafana
     url: https://k8s.proxmox.local/grafana/
-  - title: Elastic
-    description: Distributed, RESTful search and analytics engine
-    icon: hl-elastic
-    url: https://k8s.proxmox.local/kibana/app/home
+  - title: Loki
+    description: Log aggregation system
+    icon: hl-loki
+    url: https://k8s.proxmox.local/grafana/drilldown
   - title: Kiali
     description: Service mesh observability
     icon: kiali.png
