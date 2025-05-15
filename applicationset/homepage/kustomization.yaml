@@ -13,3 +13,9 @@ commonLabels:
 patches:
 - path: patches/deployment.yaml
 - path: patches/service.yaml
+
+configMapGenerator:
+- name: homepage-config
+  literals:
+    - NODE_TLS_REJECT_UNAUTHORIZED=0
+    - HOMEPAGE_ALLOWED_HOSTS=*.proxmox.local

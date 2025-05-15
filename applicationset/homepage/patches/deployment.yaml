@@ -13,6 +13,8 @@ spec:
         envFrom:
         - secretRef:
             name: homepage-secret
+        - configMapRef:
+            name: homepage-config
         ports:
         - $patch: replace
         - containerPort: 3000
