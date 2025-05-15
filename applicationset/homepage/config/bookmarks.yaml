@@ -1,0 +1,48 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Repository:
+    - GitOps:
+        - abbr: GO
+          href: https://github.com/guyzsarun-lab/gitops
+    - HomeLab:
+        - abbr: HL
+          href: https://github.com/guyzsarun-lab/homelab
+    - Ansible:
+        - abbr: AN
+          href: https://github.com/guyzsarun-lab/ansible
+    - opnsense-terraform:
+        - abbr: OT
+          href: https://github.com/guyzsarun-lab/opnsense-configuration
+    - helmcharts:
+        - abbr: HC
+          href: https://github.com/guyzsarun-lab/helm-charts
+
+- Cloud Services:
+    - AWS:
+        - href: https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin
+          icon: amazon-web-services-light
+    - GCP:
+        - href: https://console.cloud.google.com/
+          icon: sh-google
+    - Terraform:
+        - href: https://app.terraform.io/
+          icon: sh-hashicorp-terraform
+    - Line:
+        - href: https://developers.line.biz/console/
+          icon: si-line
+
+- Entertainment:
+    - YouTube:
+        - href: https://youtube.com/
+          icon: sh-youtube
+    - Youtube Music:
+        - href: https://music.youtube.com/
+          icon: youtube-music
+    - Netflix:
+        - href: https://netflix.com/
+          icon: sh-netflix
+    - Reddit:
+        - href: https://reddit.com/
+          icon: sh-reddit
