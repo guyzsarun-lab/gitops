@@ -1,0 +1,259 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Hardware:
+    - Intel Nuc:
+        ping: pve.proxmox.local
+        description: Intel NUC 12 i5 / 64GB
+        icon: sh-proxmox
+        widget:
+            type: prometheusmetric
+            url: https://k8s.proxmox.local/prometheus
+            refreshInterval: 60000
+            metrics:
+            -   label: Temperature
+                query: 'avg(node_hwmon_temp_celsius{instance="10.243.100.160:9100"})'
+                format:
+                    type: number
+                    suffix: '°C'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: CPU Load
+                query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="10.243.100.160:9100"}[5m])) * 100)'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Memory Usage
+                query: '100 * (1 - node_memory_MemAvailable_bytes{instance="10.243.100.160:9100"} / node_memory_MemTotal_bytes{instance="10.243.100.160:9100"})'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Disk Available
+                query: 'node_filesystem_free_bytes{fstype!~"tmpfs|overlay",instance="nas-server"}  / 1073741824'
+                format:
+                    type: number
+                    suffix: GB
+                    options:
+                        maximumFractionDigits: 1
+    - Raspberry Pi:
+        ping: raspberry.proxmox.local
+        description: Raspberry Pi 4B / 4GB
+        icon: sh-raspberry-pi
+        widget:
+            type: prometheusmetric
+            url: https://k8s.proxmox.local/prometheus
+            refreshInterval: 60000
+            metrics:
+            -   label: Temperature
+                query: 'avg(node_hwmon_temp_celsius{instance="pi4"})'
+                format:
+                    type: number
+                    suffix: '°C'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: CPU Load
+                query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="pi4"}[5m])) * 100)'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Memory Usage
+                query: '100 * (1 - node_memory_MemAvailable_bytes{instance="pi4"} / node_memory_MemTotal_bytes{instance="pi4"})'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Disk Available
+                query: 'node_filesystem_free_bytes{mountpoint=~"/mnt/ssd1" ,fstype!~"tmpfs|overlay",instance="pi4"}  / 1073741824'
+                format:
+                    type: number
+                    suffix: GB
+                    options:
+                        maximumFractionDigits: 1
+
+
+- Dashboard Nuc:
+    - IntelNuc:
+        widget:
+            type: iframe
+            name: myiframe
+            classes: h-96
+            src: https://k8s.proxmox.local/grafana/public-dashboards/cfe63dcb56074e329e3fdcbc594ca902?orgId=1&viewPanel=4&kiosk&refresh=5m
+
+- Dashboard RaspberryPi:
+    - RaspberryPi:
+        widget:
+            type: iframe
+            name: myiframe
+            classes: h-96
+            src: https://k8s.proxmox.local/grafana/public-dashboards/5e437b0884514cd4bac23dc5dec06157
+
+
+- Monitoring:
+    - Grafana:
+        href: https://k8s.proxmox.local/grafana/
+        description: Analytics and monitoring platform
+        icon: sh-grafana.png
+        widget:
+            type: grafana
+            url: http://kube-prom-stack-grafana.monitoring.svc.cluster.local
+            username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
+            password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
+    - Prometheus:
+        href: https://k8s.proxmox.local/prometheus/query
+        fields: ["targets_up", "targets_down"]
+        icon: sh-prometheus
+        widget:
+            type: prometheus
+            url:  http://prometheus-operated.monitoring.svc.cluster.local:9090/prometheus/
+    - Loki:
+        href: https://k8s.proxmox.local/grafana/a/grafana-lokiexplore-app/explore
+        description: Log aggregation system
+        icon: sh-loki
+    - Jaeger:
+        href: https://k8s.proxmox.local/jaeger
+        description: Distributed tracing
+        icon: /icons/jaeger.png
+
+- Applications:
+    - HomeAssistant:
+        href: http://raspberry.proxmox.local:8123
+        description: Smart home automation
+        icon: sh-home-assistant
+        widget:
+            type: homeassistant
+            url: http://raspberry.proxmox.local:8123
+            key: {{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}
+            custom:
+            -   state: sensor.u_s_air_quality_index
+                label: Air Quality
+            -   state: light.all
+                label: Lights
+    - changedetection:
+        href: https://detector.proxmox.local
+        description: Website monitoring
+        icon: sh-changedetection
+        widget:
+            type: changedetectionio
+            url: http://detector-changedetection.default.svc.cluster.local:5000
+            key: {{HOMEPAGE_VAR_CHANGEDETECTION_KEY}}
+    - Calibre:
+        href: https://calibre.proxmox.local
+        description: E-book management
+        icon: sh-calibre.png
+        widget:
+            type: calibreweb
+            url: http://calibre-application.default.svc.cluster.local:3000
+            username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
+            password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
+    - Maybe Finance:
+        href: https://maybe.proxmox.local
+        description: Personal finance management
+        icon: sh-maybe
+    - AdventureLog:
+        href: https://adventurelog.proxmox.local
+        description: Trip planning and tracking
+        icon: sh-adventurelog
+
+- Storage:
+    - Nextcloud:
+        href: https://nextcloud.proxmox.local
+        description: File storage and sharing
+        icon: sh-nextcloud
+        widget:
+            type: nextcloud
+            url: https://nextcloud.proxmox.local
+            username: {{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}
+            password: {{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}
+            fields: ["cpuload", "memoryusage", "freespace", "numfiles"]
+    - Immich:
+        href: http://raspberry.proxmox.local:2283
+        description: Google Photos alternative
+        icon: sh-immich
+        widget:
+            type: immich
+            url: http://raspberry.proxmox.local:2283/
+            key: {{HOMEPAGE_VAR_IMMICH_KEY}}
+            version: 2
+            fields: [ "photos", "videos", "storage"]
+    - Harbor:
+        href: https://harbor.proxmox.local
+        description: Docker Image registry
+        icon: sh-harbor
+    - Minio:
+        href: https://minio.proxmox.local
+        icon: sh-minio
+        description: S3 Object storage
+
+- Networking:
+    - opnsense:
+        href: https://opnsense.proxmox.local
+        description: Firewall and routing
+        icon: sh-opnsense
+        widget:
+            type: opnsense
+            url: https://opnsense.proxmox.local
+            username: {{HOMEPAGE_VAR_OPNSENSE_USERNAME}}
+            password: {{HOMEPAGE_VAR_OPNSENSE_PASSWORD}}
+            wan: opt2
+    - Kong:
+        href: http://kong-manager.proxmox.local/
+        description: API Gateway
+        icon: si-kong
+    - Kiali:
+        href: https://k8s.proxmox.local/kiali/
+        description: Service mesh observability
+        icon: /icons/kiali.png
+    - zerotier:
+        href: https://my.zerotier.com
+        icon: sh-zerotier
+        description: VPN Remote access
+        ping: zerotier.com
+
+- Tools:
+    - ArgoCD:
+        href: https://argo.proxmox.local
+        description: Declarative GitOps for Kubernetes
+        icon: sh-argo-cd
+        widget:
+            type: argocd
+            url: https://argo.proxmox.local
+            key: {{HOMEPAGE_VAR_ARGOCD_KEY}}
+
+    - DevOps Toolchain:
+        href: https://gateway.proxmox.local/toolchain/
+        description: HomeLab Infrastructure and Deployment
+        icon: sh-kubernetes
+    - CyberChef:
+        href: https://gateway.proxmox.local/cyberchef/
+        description: Utility for Cyber Security
+        icon: sh-cyberchef
+
+- IAM and Security:
+    - Keycloak:
+        href: https://k8s.proxmox.local/keycloak/
+        description: Identity and Access Management
+        icon: sh-keycloak
+    - Vault:
+        href: https://vault.proxmox.local
+        description: Secrets management
+        icon: sh-hashicorp-vault-light
+
+- Infrastructure:
+    - Proxmox:
+        href: https://pve.proxmox.local:8006
+        description: Virtualization platform
+        icon: sh-proxmox
+        widget:
+            type: proxmox
+            url: https://pve.proxmox.local:8006
+            username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
+            password:  {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
+            fields: ["vms", "resources.cpu", "resources.mem"]

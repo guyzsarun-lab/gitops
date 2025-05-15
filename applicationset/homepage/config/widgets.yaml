@@ -1,0 +1,23 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+
+- search:
+    provider: google
+    target: _blank
+
+- openweathermap:
+    label: Bangkok
+    latitude: 13.7250482
+    longitude: 100.3034431
+    units: metric # or imperial
+    apiKey: {{HOMEPAGE_VAR_WEATHERAPI_API_KEY}}
+    format:
+      maximumFractionDigits: 1
+
+

@@ -1,0 +1,44 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+providers:
+  openweathermap: openweathermapapiKey
+  weatherapi: weatherapiapikey
+
+title: HomeLab
+theme: dark # or light
+
+
+layout:
+  Hardware:
+    tab: Main
+    style: row
+    columns: 2
+  Applications:
+    tab: Main
+  Storage:
+    tab: Main
+  Monitoring:
+    tab: Main
+  Networking:
+    tab: Main
+  Tools:
+    tab: Main
+  IAM and Security:
+    tab: Main
+  Infrastructure:
+    tab: Main
+
+  Dashboard Nuc:
+    tab: Intel Nuc
+    style: row
+    columns: 1
+
+
+  Dashboard RaspberryPi:
+    tab: RaspberryPi
+    style: row
+    columns: 1
+
+statusStyle: "dot"
