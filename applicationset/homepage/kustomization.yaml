@@ -18,4 +18,4 @@ configMapGenerator:
 - name: homepage-config
   literals:
     - NODE_TLS_REJECT_UNAUTHORIZED=0
-    - HOMEPAGE_ALLOWED_HOSTS=*.proxmox.local
+    - HOMEPAGE_ALLOWED_HOSTS=gateway.proxmox.local
