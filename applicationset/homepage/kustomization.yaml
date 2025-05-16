@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../base
 - homepage-secret.yaml
+- vs.yaml
 namePrefix: homepage-
 images:
 - name: ghcr.io/guyzsarun-lab/base
