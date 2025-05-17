@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        volumeMounts:
+        - name: app-config
+          mountPath: /app/config/home.yml
+          subPath: home.yml
+        - name: app-config
+          mountPath: /app/config/glance.yml
+          subPath: glance.yml
+        - name: app-assets
+          mountPath: /app/assets/user.css
+          subPath: user.css
+      volumes:
+        - name: app-config
+          configMap:
+            name: config
+        - name: app-assets
+          configMap:
+            name: assets
