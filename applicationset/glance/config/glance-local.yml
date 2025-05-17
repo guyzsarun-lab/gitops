@@ -1,0 +1,9 @@
+server:
+  assets-path: /app/assets
+  port: 8080
+
+theme:
+  custom-css-file: /assets/user.css
+
+pages:
+  - $include: home.yml

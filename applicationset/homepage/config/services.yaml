@@ -161,6 +161,10 @@
         href: https://adventurelog.proxmox.local
         description: Trip planning and tracking
         icon: sh-adventurelog
+    - Glance:
+        href: https://gateway.proxmox.local/glance
+        description: Personal dashboard
+        icon: sh-glance
 
 - Storage:
     - Nextcloud:
@@ -192,6 +196,37 @@
         icon: sh-minio
         description: S3 Object storage
 
+- Infrastructure:
+    - Proxmox:
+        href: https://pve.proxmox.local:8006
+        description: Virtualization platform
+        icon: sh-proxmox
+        widget:
+            type: proxmox
+            url: https://pve.proxmox.local:8006
+            username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
+            password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
+            fields: ["vms", "resources.cpu", "resources.mem"]
+
+- Tools:
+    - ArgoCD:
+        href: https://argo.proxmox.local
+        description: Declarative GitOps for Kubernetes
+        icon: sh-argo-cd
+        widget:
+            type: argocd
+            url: https://argo.proxmox.local
+            key: {{HOMEPAGE_VAR_ARGOCD_KEY}}
+
+    - DevOps Toolchain:
+        href: https://gateway.proxmox.local/toolchain/
+        description: HomeLab Infrastructure and Deployment
+        icon: sh-kubernetes
+    - CyberChef:
+        href: https://gateway.proxmox.local/cyberchef/
+        description: Utility for Cyber Security
+        icon: sh-cyberchef
+
 - Networking:
     - opnsense:
         href: https://opnsense.proxmox.local
@@ -217,24 +252,7 @@
         description: VPN Remote access
         ping: zerotier.com
 
-- Tools:
-    - ArgoCD:
-        href: https://argo.proxmox.local
-        description: Declarative GitOps for Kubernetes
-        icon: sh-argo-cd
-        widget:
-            type: argocd
-            url: https://argo.proxmox.local
-            key: {{HOMEPAGE_VAR_ARGOCD_KEY}}
 
-    - DevOps Toolchain:
-        href: https://gateway.proxmox.local/toolchain/
-        description: HomeLab Infrastructure and Deployment
-        icon: sh-kubernetes
-    - CyberChef:
-        href: https://gateway.proxmox.local/cyberchef/
-        description: Utility for Cyber Security
-        icon: sh-cyberchef
 
 - IAM and Security:
     - Keycloak:
@@ -246,14 +264,4 @@
         description: Secrets management
         icon: sh-hashicorp-vault-light
 
-- Infrastructure:
-    - Proxmox:
-        href: https://pve.proxmox.local:8006
-        description: Virtualization platform
-        icon: sh-proxmox
-        widget:
-            type: proxmox
-            url: https://pve.proxmox.local:8006
-            username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
-            password:  {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
-            fields: ["vms", "resources.cpu", "resources.mem"]
+

@@ -1,0 +1,100 @@
+- name: Home
+  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+  hide-desktop-navigation: true
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          groups:
+            - links:
+                - title: Gmail
+                  url: https://mail.google.com/mail/u/0/
+                - title: Calendar
+                  url: https://calendar.google.com/calendar/u/0/r
+                - title: Github
+                  url: https://github.com/
+            - title: HomeLab
+              color: 200 50 50
+              links:
+                - title: Home Assistant
+                  url: http://raspberry.proxmox.local:8123/
+                - title: Dashboard
+                  url: https://gateway.proxmox.local/#main
+                - title: Immich
+                  url: http://raspberry.proxmox.local:2283/
+            - title: Entertainment
+              color: 10 70 50
+              links:
+                - title: Netflix
+                  url: https://www.netflix.com/
+                - title: YouTube
+                  url: https://www.youtube.com/
+        - type: custom-api
+          title: Random Fact
+          cache: 3h
+          url: https://uselessfacts.jsph.pl/api/v2/facts/random
+          template: |
+            <p class="size-h4 color-paragraph">{{ .JSON.String "text" }}</p>
+
+    - size: full
+      widgets:
+        - type: videos
+          channels:
+            - UCXuqSBlHAE6Xw-yeJA0Tunw # Linus Tech Tips
+            - UCsBjURrPoezykLs9EqgamOA # Fireship
+            - UCBJycsmduvYEL83R_U4JriQ # Marques Brownlee
+            - UCHnyfMqiRRG1u-2MsSQLbXA # Veritasium
+        - type: group
+          widgets:
+            - type: rss
+              limit: 20
+              collapse-after: 10
+              cache: 12h
+              feeds:
+                - url: https://earthquake.tmd.go.th/feed/rss_inside.xml
+                  title: Earthquake
+                  limit: 2
+                - url: http://rss.cnn.com/rss/edition.rss
+                  title: CNN
+                - url: https://www.makeuseof.com/feed/
+            - type: hacker-news
+              limit: 20
+              collapse-after: 5
+
+        - type: group
+          widgets:
+            - type: reddit
+              subreddit: technology
+              show-thumbnails: true
+            - type: reddit
+              subreddit: selfhosted
+              show-thumbnails: true
+            - type: reddit
+              subreddit: ibm
+              show-thumbnails: true
+            - type: reddit
+              subreddit: homelab
+              show-thumbnails: true
+
+
+    - size: small
+      widgets:
+        - type: weather
+          location: Bangkok, Thailand
+          units: metric
+          hour-format: 24h
+
+        - type: markets
+          markets:
+            - symbol: IBM
+              name: IBM
+            - symbol: NVDA
+              name: NVIDIA
+            - symbol: BRK-B
+              name: Berkshire
+            - symbol: JPYTHB=X
+              name: JPY/THB
+            - symbol: THB=X
+              name: USD/THB
+            - symbol: "^SET.BK"
+              name: SET Index
