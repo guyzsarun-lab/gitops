@@ -1,0 +1,30 @@
+---
+# Welcome to Dashy! To get started, run `docker compose up -d`
+# You can configure your container here, by modifying this file
+version: "3.8"
+services:
+  dashy:
+    container_name: Dashy
+    build: .
+    # image: lissy93/dashy:release-3.1.1
+    volumes:
+      - ./config.yml:/app/user-data/conf.yml
+      - ./assets:/app/public/item-icons
+      - .env:/app/.env
+    ports:
+      - 8080:8080
+
+    # Set any environmental variables
+    environment:
+      - NODE_ENV=development
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+
+    # Specify restart policy
+    restart: unless-stopped
+
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
