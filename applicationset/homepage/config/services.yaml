@@ -205,7 +205,7 @@
             type: proxmox
             url: https://pve.proxmox.local:8006
             username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
-            password:  {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
+            password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
             fields: ["vms", "resources.cpu", "resources.mem"]
 
 - Tools:
