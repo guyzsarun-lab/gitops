@@ -9,6 +9,7 @@
 | __toolchain__ | [![toolchain](https://github.com/guyzsarun-lab/gitops/actions/workflows/toolchain.yaml/badge.svg)](https://github.com/guyzsarun-lab/gitops/actions/workflows/toolchain.yaml) | DevOps Toolchain |
 | __cyberchef__ | [![cyberchef](https://github.com/guyzsarun-lab/gitops/actions/workflows/cyberchef.yaml/badge.svg)](https://github.com/guyzsarun-lab/gitops/actions/workflows/cyberchef.yaml) | Selfhosted [CyberChef](https://github.com/gchq/CyberChef/) |
 | __homepage__ | [![homepage](https://github.com/guyzsarun-lab/gitops/actions/workflows/homepage.yaml/badge.svg)](https://github.com/guyzsarun-lab/gitops/actions/workflows/homepage.yaml) | HomeLab Dashboard #2 |
+| __glance__ | | News Feed |
 
 ## Project Structure
 
