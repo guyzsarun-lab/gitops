@@ -129,6 +129,10 @@ kube-prometheus-stack:
             action: keep
             regex: '.*-envoy-prom'
 
+        - job_name: postgres
+          static_configs:
+            - targets: ["172.16.0.3:9187"]
+
   alertmanager:
     enabled: false
 
