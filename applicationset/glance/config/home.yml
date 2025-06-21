@@ -92,6 +92,8 @@
               name: NVIDIA
             - symbol: BRK-B
               name: Berkshire
+            - symbol: GC=F
+              name: Gold
             - symbol: JPYTHB=X
               name: JPY/THB
             - symbol: THB=X
