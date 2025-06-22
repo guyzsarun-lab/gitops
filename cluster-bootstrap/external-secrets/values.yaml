@@ -1,0 +1,21 @@
+external-secrets:
+  revisionHistoryLimit: 3
+  installCRDs: true
+
+  resources:
+    limits:
+      cpu: 20m
+      memory: 100Mi
+
+  webhook:
+    resources:
+      limits:
+        cpu: 20m
+        memory: 100Mi
+
+
+  certController:
+    resources:
+      limits:
+        cpu: 20m
+        memory: 100Mi
