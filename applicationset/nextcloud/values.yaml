@@ -4,8 +4,8 @@ nextcloud:
     existingSecret:
       enabled: true
       secretName: nextcloud-secret
-      usernameKey: username
-      passwordKey: password
+      usernameKey: nextcloud-username
+      passwordKey: nextcloud-password
     trustedDomains: ['localhost','nextcloud.proxmox.local','nextcloud.guyzsarun.xyz']
   livenessProbe:
     enabled: false
