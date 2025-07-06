@@ -4,7 +4,7 @@ nextcloud:
     username: admin
     password: P@ssw0rd
     update: 0
-    trustedDomains: ['localhost','nextcloud.proxmox.local']
+    trustedDomains: ['localhost','nextcloud.proxmox.local','nextcloud.guyzsarun.xyz']
   livenessProbe:
     enabled: false
   readinessProbe:
