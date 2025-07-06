@@ -1,10 +1,12 @@
 nextcloud:
   nextcloud:
     host: nextcloud.proxmox.local
-    username: admin
-    password: P@ssw0rd
-    update: 0
-    trustedDomains: ['localhost','nextcloud.proxmox.local']
+    existingSecret:
+      enabled: true
+      secretName: nextcloud-secret
+      usernameKey: nextcloud-username
+      passwordKey: nextcloud-password
+    trustedDomains: ['localhost','nextcloud.proxmox.local','nextcloud.guyzsarun.xyz']
   livenessProbe:
     enabled: false
   readinessProbe:
