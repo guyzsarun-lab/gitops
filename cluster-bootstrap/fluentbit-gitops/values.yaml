@@ -35,6 +35,8 @@ fluent-bit:
           Exclude        $kubernetes['namespace_name'] metallb-system
           Exclude        $kubernetes['namespace_name'] argocd
           Exclude        $kubernetes['namespace_name'] kube-system
+          Exclude        $kubernetes['namespace_name']
+          Exclude        labels.app cyberchef
           Exclude        log /^(127.0.0.1|::1).*/
           Exclude        remote /^(127.0.0.1|::1).*/
           Exclude        path /^\/metrics.*/
@@ -64,5 +66,5 @@ fluent-bit:
           labels job=fluentbit, mystream=$sub['stream'], namespace=$kubernetes['namespace_name'], pod_name=$kubernetes['pod_name']
           auto_kubernetes_labels on
           structured_metadata pod=$kubernetes['pod_name']
-          tenant_id foo
+          tenant_id kubernetes
           host loki.monitoring.svc.cluster.local
