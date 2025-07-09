@@ -36,6 +36,7 @@ fluent-bit:
           Exclude        $kubernetes['namespace_name'] argocd
           Exclude        $kubernetes['namespace_name'] kube-system
           Exclude        $kubernetes['labels']['app.kubernetes.io/instance'] detector
+          Exclude        $kubernetes['labels']['app.kubernetes.io/instance'] loki
           Exclude        log /^(127.0.0.1|::1).*/
           Exclude        remote /^(127.0.0.1|::1).*/
           Exclude        path /^\/metrics.*/
