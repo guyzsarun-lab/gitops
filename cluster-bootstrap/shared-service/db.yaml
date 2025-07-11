@@ -1,0 +1,27 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: central-db
+spec:
+  instances: 2
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+  storage:
+    size: 200Mi
+  monitoring:
+    enablePodMonitor: true
+  backup:
+    barmanObjectStore:
+      data:
+        compression: gzip
+      destinationPath: "s3://postgres/"
+      endpointURL: "http://172.16.0.3:9000"
+      s3Credentials:
+        accessKeyId:
+          name: aws-creds
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: aws-creds
+          key: ACCESS_SECRET_KEY
+      wal:
+        compression: gzip
+    retentionPolicy: "10d"
