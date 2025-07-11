@@ -21,3 +21,6 @@ kiali-server:
       url: "http://prometheus-operated.monitoring:9090/prometheus"
     grafana:
       enabled: false
+
+  login_token:
+    signing_key: "vMwcsKgTZ4tiQbMVRcUGC08WYU21PTzr"
