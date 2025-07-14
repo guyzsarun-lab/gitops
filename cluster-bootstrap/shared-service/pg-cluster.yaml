@@ -13,10 +13,10 @@ spec:
   resources:
     requests:
       memory: "256Mi"
-      cpu: 1
+      cpu: '1'
     limits:
       memory: "256Mi"
-      cpu: 1
+      cpu: '1'
   storage:
     size: 200Mi
   monitoring:
@@ -51,6 +51,9 @@ spec:
     - name: app
       createdb: true
       login: true
+      connectionLimit: -1
+      ensure: present
+      inherit: true
     - name: pg-admin
       ensure: present
       superuser: true
