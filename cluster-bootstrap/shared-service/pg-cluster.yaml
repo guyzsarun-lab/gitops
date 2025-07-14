@@ -60,4 +60,4 @@ spec:
       superuser: true
       createdb: true
       passwordSecret:
-        name: pg-cluster-admin
+        name: pg-admin
