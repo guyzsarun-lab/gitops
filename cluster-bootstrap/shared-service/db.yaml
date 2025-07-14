@@ -5,6 +5,18 @@ metadata:
 spec:
   instances: 2
   imageName: ghcr.io/cloudnative-pg/postgresql:17.5
+
+  postgresql:
+    parameters:
+      shared_buffers: "128MB"
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: 1
+    limits:
+      memory: "256Mi"
+      cpu: 1
   storage:
     size: 200Mi
   monitoring:
