@@ -56,6 +56,7 @@ spec:
       inherit: true
     - name: pg-admin
       ensure: present
+      login: true
       superuser: true
       createdb: true
       passwordSecret:
