@@ -37,3 +37,13 @@ spec:
       wal:
         compression: gzip
     retentionPolicy: "10d"
+
+  managed:
+    services:
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: "pg-cluster-lb"
+            spec:
+              type: LoadBalancer
