@@ -47,3 +47,13 @@ spec:
               name: "pg-cluster-lb"
             spec:
               type: LoadBalancer
+    roles:
+    - name: app
+      createdb: true
+      login: true
+    - name: pg-admin
+      ensure: present
+      superuser: true
+      createdb: true
+      passwordSecret:
+        name: pg-cluster-admin
