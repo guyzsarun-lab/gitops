@@ -61,3 +61,8 @@ spec:
       createdb: true
       passwordSecret:
         name: pg-admin
+    - name: keycloak
+      ensure: present
+      login: true
+      passwordSecret:
+        name: keycloak
