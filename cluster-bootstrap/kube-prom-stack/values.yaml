@@ -64,7 +64,7 @@ kube-prometheus-stack:
       podMonitorSelectorNilUsesHelmValues: false
       routePrefix: /prometheus
       retention: 7d
-      scrapeInterval: "120s"
+      scrapeInterval: "180s"
       resources:
         limits:
           cpu: 200m
