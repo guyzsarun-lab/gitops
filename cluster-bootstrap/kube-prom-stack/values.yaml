@@ -61,6 +61,7 @@ kube-prometheus-stack:
 
   prometheus:
     prometheusSpec:
+      podMonitorSelectorNilUsesHelmValues: false
       routePrefix: /prometheus
       retention: 7d
       scrapeInterval: "120s"
