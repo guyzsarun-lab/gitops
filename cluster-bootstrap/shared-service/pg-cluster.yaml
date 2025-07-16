@@ -15,7 +15,7 @@ spec:
       memory: "256Mi"
       cpu: '1'
     limits:
-      memory: "256Mi"
+      memory: "1Gi"
       cpu: '1'
   storage:
     size: 200Mi
