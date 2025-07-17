@@ -56,13 +56,16 @@ spec:
       inherit: true
     - name: pg-admin
       ensure: present
+      connectionLimit: -1
       login: true
       superuser: true
       createdb: true
       passwordSecret:
         name: pg-admin
     - name: keycloak
+      inherit: true
       ensure: present
+      connectionLimit: -1
       login: true
       passwordSecret:
         name: keycloak
