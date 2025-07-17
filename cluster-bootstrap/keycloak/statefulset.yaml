@@ -22,10 +22,8 @@ spec:
           - secretRef:
               name: keycloak-secret
           env:
-            - name: KC_PROXY_HEADERS
-              value: "xforwarded"
             - name: KC_HOSTNAME_STRICT
-              value: "false"
+              value: "true"
             - name: KC_HEALTH_ENABLED
               value: "true"
             - name: 'KC_CACHE'

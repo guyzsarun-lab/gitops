@@ -8,10 +8,7 @@ spec:
   hosts:
   - keycloak.proxmox.local
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
+  - route:
     - destination:
         host: keycloak
         port:
