@@ -2,7 +2,7 @@ kiali-server:
   auth:
     openid:
       client_id: "kiali-openid-client"
-      issuer_uri: "https://k8s.proxmox.local/keycloak/realms/keycloak-oidc"
+      issuer_uri: "http://keycloak.proxmox.local/realms/keycloak-oidc"
       insecure_skip_verify_tls: true
       disable_rbac: true
       scopes: ["openid","email"]
