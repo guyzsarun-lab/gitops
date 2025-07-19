@@ -16,7 +16,7 @@ influxdb2:
   persistence:
     enabled: true
     useExisting: true
-    name: influxdb2-pvc
+    name: influxdb-pvc
 
   adminUser:
     organization: "influxdata"
