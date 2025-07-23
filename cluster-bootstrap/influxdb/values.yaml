@@ -1,0 +1,27 @@
+influxdb2:
+  fullnameOverride: "influxdb"
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+
+  pdb:
+    enabled: false
+
+  service:
+    type: ClusterIP
+    port: 8086
+    targetPort: 8086
+    portName: http
+
+  persistence:
+    enabled: true
+    useExisting: true
+    name: influxdb-pvc
+
+  adminUser:
+    organization: "influxdata"
+    bucket: "default"
+    user: "admin"
+
+    existingSecret: influxdb-secret
