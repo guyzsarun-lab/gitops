@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: keycloak-vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - keycloak.proxmox.local
+  http:
+  - route:
+    - destination:
+        host: keycloak
+        port:
+          number: 8080
