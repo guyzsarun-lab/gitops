@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - linkwarden.proxmox.local
+  http:
+  - route:
+    - destination:
+        host: linkwarden-application
+        port:
+          number: 3000
