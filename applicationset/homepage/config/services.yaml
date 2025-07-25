@@ -85,7 +85,7 @@
             type: iframe
             name: myiframe
             classes: h-96
-            src: https://k8s.proxmox.local/grafana/public-dashboards/cfe63dcb56074e329e3fdcbc594ca902?orgId=1&viewPanel=4&kiosk&refresh=5m
+            src: https://k8s.proxmox.local/grafana/public-dashboards/1c9275d021fb436a976bb25065c55eed
 
 - Dashboard RaspberryPi:
     - RaspberryPi:
@@ -93,7 +93,7 @@
             type: iframe
             name: myiframe
             classes: h-96
-            src: https://k8s.proxmox.local/grafana/public-dashboards/5e437b0884514cd4bac23dc5dec06157
+            src: https://k8s.proxmox.local/grafana/public-dashboards/e1a09c83f0f1483f9ecf3ea2c4b49b97
 
 
 - Monitoring:
@@ -226,6 +226,18 @@
         href: https://gateway.proxmox.local/cyberchef/
         description: Utility for Cyber Security
         icon: sh-cyberchef
+    - n8n:
+        href: https://n8n-automation.proxmox.local/
+        description: Workflow automation
+        icon: sh-n8n
+    - Linkwarden:
+        href: https://linkwarden.proxmox.local
+        description: Bookmark management
+        icon: sh-linkwarden
+        widget:
+            type: linkwarden
+            url: https://linkwarden.proxmox.local
+            key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}}
 
 - Networking:
     - opnsense:

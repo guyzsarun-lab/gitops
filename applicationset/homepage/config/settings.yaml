@@ -9,7 +9,6 @@ providers:
 title: HomeLab
 theme: dark # or light
 
-
 layout:
   Hardware:
     tab: Main
@@ -34,7 +33,6 @@ layout:
     tab: Intel Nuc
     style: row
     columns: 1
-
 
   Dashboard RaspberryPi:
     tab: RaspberryPi
