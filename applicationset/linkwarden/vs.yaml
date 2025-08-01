@@ -6,7 +6,7 @@ spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - linkwarden.proxmox.local
+  - linkwarden.proxmox.homelab
   http:
   - route:
     - destination:
