@@ -27,7 +27,7 @@ kube-prometheus-stack:
 
     grafana.ini:
       server:
-        root_url: https://k8s.proxmox.local/grafana
+        root_url: https://k8s.proxmox.homelab/grafana
         serve_from_sub_path: true
       panels:
         enable_alpha: true
@@ -102,7 +102,7 @@ kube-prometheus-stack:
               labels:
                 instance: 'ubuntu-jumphost'
             - targets:
-              - 172.16.0.4:9100
+              - 172.27.128.1:9100
               labels:
                 instance: 'nas-server'
             - targets:
