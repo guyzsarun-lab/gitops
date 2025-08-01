@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: nextcloud-vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - nextcloud.proxmox.homelab
+  http:
+  - route:
+    - destination:
+        host: nextcloud
+        port:
+          number: 8080
