@@ -13,7 +13,7 @@ spec:
   - hard
   - nfsvers=4.1
   nfs:
-    path: /home/devops/nfs_share/kubernetes/grafana
+    path: /home/devops/nfs_share/grafana
     server: nfs.proxmox.homelab
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
