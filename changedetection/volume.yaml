@@ -15,7 +15,7 @@ spec:
     - nfsvers=4.1
   nfs:
     path: /home/devops/nfs_share/changedetection
-    server: 172.20.0.22
+    server: nfs.proxmox.homelab
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
