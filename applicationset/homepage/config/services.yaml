@@ -4,12 +4,12 @@
 
 - Hardware:
     - Intel Nuc:
-        ping: pve.proxmox.local
+        ping: pve.proxmox.homelab
         description: Intel NUC 12 i5 / 64GB
         icon: sh-proxmox
         widget:
             type: prometheusmetric
-            url: https://k8s.proxmox.local/prometheus
+            url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
             -   label: Temperature
@@ -41,12 +41,12 @@
                     options:
                         maximumFractionDigits: 1
     - Raspberry Pi:
-        ping: raspberry.proxmox.local
+        ping: raspberry.proxmox.homelab
         description: Raspberry Pi 4B / 4GB
         icon: sh-raspberry-pi
         widget:
             type: prometheusmetric
-            url: https://k8s.proxmox.local/prometheus
+            url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
             -   label: Temperature
@@ -85,7 +85,7 @@
             type: iframe
             name: myiframe
             classes: h-96
-            src: https://k8s.proxmox.local/grafana/public-dashboards/1c9275d021fb436a976bb25065c55eed
+            src: https://k8s.proxmox.homelab/grafana/public-dashboards/1c9275d021fb436a976bb25065c55eed
 
 - Dashboard RaspberryPi:
     - RaspberryPi:
@@ -93,12 +93,12 @@
             type: iframe
             name: myiframe
             classes: h-96
-            src: https://k8s.proxmox.local/grafana/public-dashboards/e1a09c83f0f1483f9ecf3ea2c4b49b97
+            src: https://k8s.proxmox.homelab/grafana/public-dashboards/e1a09c83f0f1483f9ecf3ea2c4b49b97
 
 
 - Monitoring:
     - Grafana:
-        href: https://k8s.proxmox.local/grafana/
+        href: https://k8s.proxmox.homelab/grafana/
         description: Analytics and monitoring platform
         icon: sh-grafana.png
         widget:
@@ -107,29 +107,29 @@
             username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
             password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
     - Prometheus:
-        href: https://k8s.proxmox.local/prometheus/query
+        href: https://k8s.proxmox.homelab/prometheus/query
         fields: ["targets_up", "targets_down"]
         icon: sh-prometheus
         widget:
             type: prometheus
             url:  http://prometheus-operated.monitoring.svc.cluster.local:9090/prometheus/
     - Loki:
-        href: https://k8s.proxmox.local/grafana/a/grafana-lokiexplore-app/explore
+        href: https://k8s.proxmox.homelab/grafana/a/grafana-lokiexplore-app/explore
         description: Log aggregation system
         icon: sh-loki
     - Jaeger:
-        href: https://k8s.proxmox.local/jaeger
+        href: https://k8s.proxmox.homelab/jaeger
         description: Distributed tracing
         icon: /icons/jaeger.png
 
 - Applications:
     - HomeAssistant:
-        href: http://raspberry.proxmox.local:8123
+        href: http://raspberry.proxmox.homelab:8123
         description: Smart home automation
         icon: sh-home-assistant
         widget:
             type: homeassistant
-            url: http://raspberry.proxmox.local:8123
+            url: http://raspberry.proxmox.homelab:8123
             key: {{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}
             custom:
             -   state: sensor.u_s_air_quality_index
@@ -137,7 +137,7 @@
             -   state: light.all
                 label: Lights
     - changedetection:
-        href: https://detector.proxmox.local
+        href: https://detector.proxmox.homelab
         description: Website monitoring
         icon: sh-changedetection
         widget:
@@ -158,104 +158,104 @@
         description: Personal finance management
         icon: sh-maybe
     - AdventureLog:
-        href: https://adventurelog.proxmox.local
+        href: https://adventurelog.proxmox.homelab
         description: Trip planning and tracking
         icon: sh-adventurelog
     - Glance:
-        href: https://gateway.proxmox.local/glance
+        href: https://gateway.proxmox.homelab/glance
         description: Personal dashboard
         icon: sh-glance
 
 - Storage:
     - Nextcloud:
-        href: https://nextcloud.proxmox.local
+        href: https://nextcloud.proxmox.homelab
         description: File storage and sharing
         icon: sh-nextcloud
         widget:
             type: nextcloud
-            url: https://nextcloud.proxmox.local
+            url: https://nextcloud.proxmox.homelab
             username: {{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}
             password: {{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}
             fields: ["cpuload", "memoryusage", "freespace", "numfiles"]
     - Immich:
-        href: http://raspberry.proxmox.local:2283
+        href: http://raspberry.proxmox.homelab:2283
         description: Google Photos alternative
         icon: sh-immich
         widget:
             type: immich
-            url: http://raspberry.proxmox.local:2283/
+            url: http://raspberry.proxmox.homelab:2283/
             key: {{HOMEPAGE_VAR_IMMICH_KEY}}
             version: 2
             fields: [ "photos", "videos", "storage"]
     - Harbor:
-        href: https://harbor.proxmox.local
+        href: https://harbor.proxmox.homelab
         description: Docker Image registry
         icon: sh-harbor
     - Minio:
-        href: https://minio.proxmox.local
+        href: https://minio.proxmox.homelab
         icon: sh-minio
         description: S3 Object storage
 
 - Infrastructure:
     - Proxmox:
-        href: https://pve.proxmox.local:8006
+        href: https://pve.proxmox.homelab:8006
         description: Virtualization platform
         icon: sh-proxmox
         widget:
             type: proxmox
-            url: https://pve.proxmox.local:8006
+            url: https://pve.proxmox.homelab:8006
             username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
             password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
             fields: ["vms", "resources.cpu", "resources.mem"]
 
 - Tools:
     - ArgoCD:
-        href: https://argo.proxmox.local
+        href: https://argo.proxmox.homelab
         description: Declarative GitOps for Kubernetes
         icon: sh-argo-cd
         widget:
             type: argocd
-            url: https://argo.proxmox.local
+            url: https://argo.proxmox.homelab
             key: {{HOMEPAGE_VAR_ARGOCD_KEY}}
 
     - DevOps Toolchain:
-        href: https://gateway.proxmox.local/toolchain/
+        href: https://gateway.proxmox.homelab/toolchain/
         description: HomeLab Infrastructure and Deployment
         icon: sh-kubernetes
     - CyberChef:
-        href: https://gateway.proxmox.local/cyberchef/
+        href: https://gateway.proxmox.homelab/cyberchef/
         description: Utility for Cyber Security
         icon: sh-cyberchef
     - n8n:
-        href: https://n8n-automation.proxmox.local/
+        href: https://n8n-automation.proxmox.homelab/
         description: Workflow automation
         icon: sh-n8n
     - Linkwarden:
-        href: https://linkwarden.proxmox.local
+        href: https://linkwarden.proxmox.homelab
         description: Bookmark management
         icon: sh-linkwarden
         widget:
             type: linkwarden
-            url: https://linkwarden.proxmox.local
+            url: https://linkwarden.proxmox.locahomelabl
             key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}}
 
 - Networking:
     - opnsense:
-        href: https://opnsense.proxmox.local
+        href: https://opnsense.proxmox.homelab
         description: Firewall and routing
         icon: sh-opnsense
         widget:
             type: opnsense
-            url: https://opnsense.proxmox.local
+            url: https://opnsense.proxmox.homelab
             username: {{HOMEPAGE_VAR_OPNSENSE_USERNAME}}
             password: {{HOMEPAGE_VAR_OPNSENSE_PASSWORD}}
             wan: opt2
     - Kong:
-        href: http://kong-manager.proxmox.local/
+        href: http://kong-manager.proxmox.homelab/
         description: API Gateway
         icon: si-kong
     - Kiali:
-        href: https://k8s.proxmox.local/kiali/
+        href: https://k8s.proxmox.homelab/kiali/
         description: Service mesh observability
         icon: /icons/kiali.png
     - zerotier:
@@ -268,11 +268,11 @@
 
 - IAM and Security:
     - Keycloak:
-        href: https://k8s.proxmox.local/keycloak/
+        href: https://keycloak.proxmox.homelab
         description: Identity and Access Management
         icon: sh-keycloak
     - Vault:
-        href: https://vault.proxmox.local
+        href: https://vault.proxmox.homelab
         description: Secrets management
         icon: sh-hashicorp-vault-light
 
