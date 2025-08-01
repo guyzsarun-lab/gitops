@@ -6,7 +6,7 @@ spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - keycloak.proxmox.local
+  - keycloak.proxmox.homelab
   http:
   - route:
     - destination:
