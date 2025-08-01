@@ -42,9 +42,9 @@ kube-prometheus-stack:
           email_attribute_path : email
           login_attribute_path : username
           name_attribute_path : full_name
-          auth_url : https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/auth
-          token_url : https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/token
-          api_url :  https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/userinfo
+          auth_url : https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/auth
+          token_url : https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/token
+          api_url :  https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/userinfo
           tls_skip_verify_insecure: true
           allow_assign_grafana_admin : true
           role_attribute_path : contains(realm_access.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(realm_access.roles[*], 'admin') && 'Admin' || contains(realm_access.roles[*], 'editor') && 'Editor' || 'Viewer'
