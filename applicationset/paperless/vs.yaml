@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - paperless.proxmox.homelab
+  http:
+  - route:
+    - destination:
+        host: paperless-application
+        port:
+          number: 3000
