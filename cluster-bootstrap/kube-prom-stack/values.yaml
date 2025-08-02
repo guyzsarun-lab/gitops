@@ -93,22 +93,14 @@ kube-prometheus-stack:
           scheme: http
           static_configs:
             - targets:
-              - server.proxmox.local:9000
+              - server.proxmox.homelab:9000
 
         - job_name: 'node-exporter'
           static_configs:
             - targets:
-              - 172.16.0.3:9100
-              labels:
-                instance: 'ubuntu-jumphost'
-            - targets:
-              - 172.27.128.1:9100
-              labels:
-                instance: 'nas-server'
-            - targets:
-              - 172.16.0.13:9100
-              labels:
-                instance: 'app-server'
+              - server.proxmox.homelab:9100
+              - nfs.proxmox.homelab:9100
+              - app.proxmox.homelab:9100
             - targets:
               - 10.243.199.158:9100
               labels:
@@ -116,7 +108,8 @@ kube-prometheus-stack:
 
         - job_name: 'kong-gateway'
           static_configs:
-            - targets: ['gateway.proxmox.local:8001']
+            - targets: ['gateway.proxmox.homelab:8001']
+
         - job_name: 'istiod'
           kubernetes_sd_configs:
           - role: endpoints
