@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        resources:
+          limits:
+            cpu: 500m
+            memory: 2Gi
+        volumeMounts:
+        - name: paperless-data
+          mountPath: /usr/src/paperless/export
+          subPath: export
+        - name: paperless-data
+          mountPath: /usr/src/paperless/consume
+          subPath: consume
+        - name: paperless-data
+          mountPath: /usr/src/paperless/data
+          subPath: data
+        - name: paperless-data
+          mountPath: /usr/src/paperless/media
+          subPath: media
+      volumes:
+      - name: paperless-data
+        persistentVolumeClaim:
+          claimName: pvc
