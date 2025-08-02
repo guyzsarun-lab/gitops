@@ -1,15 +1,15 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: keycloak-vs
+  name: nextcloud-vs
 spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - keycloak.proxmox.homelab
+  - nextcloud.proxmox.homelab
   http:
   - route:
     - destination:
-        host: keycloak
+        host: nextcloud
         port:
           number: 8080

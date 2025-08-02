@@ -6,7 +6,7 @@ spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - k8s.proxmox.local
+  - k8s.proxmox.homelab
   http:
   - match:
     - uri:

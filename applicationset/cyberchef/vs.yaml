@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: cyberchef-vs
+  name: vs
 spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - gateway.proxmox.local
+  - gateway.proxmox.homelab
   http:
   - match:
     - uri:

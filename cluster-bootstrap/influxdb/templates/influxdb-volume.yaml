@@ -13,8 +13,8 @@ spec:
   - hard
   - nfsvers=4.1
   nfs:
-    path: /home/devops/nfs_share/kubernetes/influxdb
-    server: 172.16.0.4
+    path: /home/devops/nfs_share/influxdb
+    server: nfs.proxmox.homelab
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   storageClassName: influxdb

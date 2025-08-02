@@ -6,7 +6,7 @@ spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - gateway.proxmox.local
+  - gateway.proxmox.homelab
   http:
   - match:
     - uri:
