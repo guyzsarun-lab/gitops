@@ -145,7 +145,7 @@
             url: http://detector-changedetection.default.svc.cluster.local:5000
             key: {{HOMEPAGE_VAR_CHANGEDETECTION_KEY}}
     - Calibre:
-        href: https://calibre.proxmox.local
+        href: https://calibre.proxmox.homelab
         description: E-book management
         icon: sh-calibre.png
         widget:
@@ -153,10 +153,10 @@
             url: http://calibre-application.default.svc.cluster.local:3000
             username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
             password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
-    - Maybe Finance:
-        href: https://maybe.proxmox.local
-        description: Personal finance management
-        icon: sh-maybe
+    # - Maybe Finance:
+    #     href: https://maybe.proxmox.local
+    #     description: Personal finance management
+    #     icon: sh-maybe
     - AdventureLog:
         href: https://adventurelog.proxmox.homelab
         description: Trip planning and tracking
