@@ -236,7 +236,7 @@
         icon: sh-linkwarden
         widget:
             type: linkwarden
-            url: https://linkwarden.proxmox.locahomelabl
+            url: https://linkwarden.proxmox.homelab
             key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}}
 
 - Networking:
