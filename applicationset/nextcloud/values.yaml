@@ -1,12 +1,12 @@
 nextcloud:
   nextcloud:
-    host: nextcloud.proxmox.local
+    host: nextcloud.proxmox.homelab
     existingSecret:
       enabled: true
       secretName: nextcloud-secret
       usernameKey: nextcloud-username
       passwordKey: nextcloud-password
-    trustedDomains: ['localhost','nextcloud.proxmox.local','nextcloud.guyzsarun.xyz']
+    trustedDomains: ['localhost','nextcloud.proxmox.homelab','nextcloud.guyzsarun.xyz']
   livenessProbe:
     enabled: false
   readinessProbe:

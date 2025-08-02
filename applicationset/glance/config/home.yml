@@ -17,11 +17,11 @@
               color: 200 50 50
               links:
                 - title: Home Assistant
-                  url: http://raspberry.proxmox.local:8123/
+                  url: http://raspberry.proxmox.homelab:8123/
                 - title: Dashboard
-                  url: https://gateway.proxmox.local/#main
+                  url: https://gateway.proxmox.homelab/#main
                 - title: Immich
-                  url: http://raspberry.proxmox.local:2283/
+                  url: http://raspberry.proxmox.homelab:2283/
             - title: Entertainment
               color: 10 70 50
               links:

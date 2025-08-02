@@ -1,18 +1,18 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: vs
+  name: changedetection-vs
 spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - gateway.proxmox.homelab
+  - detector.proxmox.homelab
   http:
   - match:
     - uri:
         prefix: /
     route:
     - destination:
-        host: homepage-application.default.svc.cluster.local
+        host: detector-changedetection.default.svc.cluster.local
         port:
-          number: 3000
+          number: 5000

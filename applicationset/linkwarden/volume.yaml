@@ -15,7 +15,7 @@ spec:
     - nfsvers=4.1
   nfs:
     path: /home/devops/nfs_share/linkwarden
-    server: 172.16.0.4
+    server: nfs.proxmox.homelab
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

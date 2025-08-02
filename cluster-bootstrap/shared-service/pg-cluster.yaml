@@ -26,7 +26,7 @@ spec:
       data:
         compression: gzip
       destinationPath: "s3://postgres/"
-      endpointURL: "http://172.16.0.3:9000"
+      endpointURL: "http://server.proxmox.homelab:9000"
       s3Credentials:
         accessKeyId:
           name: aws-creds

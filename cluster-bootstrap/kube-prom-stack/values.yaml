@@ -27,7 +27,7 @@ kube-prometheus-stack:
 
     grafana.ini:
       server:
-        root_url: https://k8s.proxmox.local/grafana
+        root_url: https://k8s.proxmox.homelab/grafana
         serve_from_sub_path: true
       panels:
         enable_alpha: true
@@ -42,9 +42,9 @@ kube-prometheus-stack:
           email_attribute_path : email
           login_attribute_path : username
           name_attribute_path : full_name
-          auth_url : https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/auth
-          token_url : https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/token
-          api_url :  https://keycloak.proxmox.local/realms/oidc/protocol/openid-connect/userinfo
+          auth_url : https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/auth
+          token_url : https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/token
+          api_url :  https://keycloak.proxmox.homelab/realms/oidc/protocol/openid-connect/userinfo
           tls_skip_verify_insecure: true
           allow_assign_grafana_admin : true
           role_attribute_path : contains(realm_access.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(realm_access.roles[*], 'admin') && 'Admin' || contains(realm_access.roles[*], 'editor') && 'Editor' || 'Viewer'
@@ -102,7 +102,7 @@ kube-prometheus-stack:
               labels:
                 instance: 'ubuntu-jumphost'
             - targets:
-              - 172.16.0.4:9100
+              - 172.27.128.1:9100
               labels:
                 instance: 'nas-server'
             - targets:
