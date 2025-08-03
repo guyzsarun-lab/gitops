@@ -33,7 +33,7 @@ layout:
     columns: 1
 
   Dashboard RaspberryPi:
-    tab: RaspberryPi
+    tab: Raspberry Pi
     style: row
     columns: 1
 

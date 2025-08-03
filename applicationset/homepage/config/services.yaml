@@ -109,7 +109,7 @@
                         maximumFractionDigits: 0
 
 - Dashboard Nuc:
-    - IntelNuc:
+    - Intel Nuc:
         widget:
             type: iframe
             name: myiframe
@@ -117,7 +117,7 @@
             src: https://k8s.proxmox.homelab/grafana/public-dashboards/1c9275d021fb436a976bb25065c55eed
 
 - Dashboard RaspberryPi:
-    - RaspberryPi:
+    - Raspberry Pi:
         widget:
             type: iframe
             name: myiframe
