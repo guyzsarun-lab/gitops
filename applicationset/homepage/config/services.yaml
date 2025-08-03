@@ -5,10 +5,11 @@
 - Hardware:
     - Intel Nuc:
         ping: pve.proxmox.homelab
+        href: https://pve.proxmox.homelab:8006
         description: Intel NUC 12 i5 / 64GB
         icon: sh-proxmox
         widget:
-            type: prometheusmetric
+        -   type: prometheusmetric
             url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
@@ -26,20 +27,20 @@
                     suffix: '%'
                     options:
                         maximumFractionDigits: 1
-            -   label: Memory Usage
+            -   label: Memory
                 query: '100 * (1 - node_memory_MemAvailable_bytes{instance="10.243.100.160:9100"} / node_memory_MemTotal_bytes{instance="10.243.100.160:9100"})'
                 format:
                     type: number
                     suffix: '%'
                     options:
-                        maximumFractionDigits: 1
-            -   label: Disk Available
-                query: 'node_filesystem_free_bytes{fstype!~"tmpfs|overlay",instance="nas-server"}  / 1073741824'
+                        maximumFractionDigits: 0
+            -   label: Disk
+                query: 'node_filesystem_free_bytes{fstype!~"tmpfs|overlay",instance="nfs.proxmox.homelab:9100"}  / 1073741824'
                 format:
                     type: number
                     suffix: GB
                     options:
-                        maximumFractionDigits: 1
+                        maximumFractionDigits: 0
     - Raspberry Pi:
         ping: raspberry.proxmox.homelab
         description: Raspberry Pi 4B / 4GB
@@ -63,24 +64,52 @@
                     suffix: '%'
                     options:
                         maximumFractionDigits: 1
-            -   label: Memory Usage
+            -   label: Memory
                 query: '100 * (1 - node_memory_MemAvailable_bytes{instance="pi4"} / node_memory_MemTotal_bytes{instance="pi4"})'
                 format:
                     type: number
                     suffix: '%'
                     options:
-                        maximumFractionDigits: 1
-            -   label: Disk Available
+                        maximumFractionDigits: 0
+            -   label: Disk
                 query: 'node_filesystem_free_bytes{mountpoint=~"/mnt/ssd1" ,fstype!~"tmpfs|overlay",instance="pi4"}  / 1073741824'
                 format:
                     type: number
                     suffix: GB
                     options:
-                        maximumFractionDigits: 1
-
+                        maximumFractionDigits: 0
+    - NAS:
+        icon: si-truenas-#0095D5
+        description: Storage server
+        widget:
+            type: prometheusmetric
+            url: https://k8s.proxmox.homelab/prometheus
+            refreshInterval: 60000
+            metrics:
+            -   label: NFS Disk
+                query: 'node_filesystem_free_bytes{fstype!~"tmpfs|overlay",instance="nfs.proxmox.homelab:9100"}  / 1073741824'
+                format:
+                    type: number
+                    suffix: GB
+                    options:
+                        maximumFractionDigits: 0
+            -   label: SSD Disk
+                query: 'node_filesystem_free_bytes{mountpoint=~"/mnt/ssd1" ,fstype!~"tmpfs|overlay",instance="pi4"}  / 1073741824'
+                format:
+                    type: number
+                    suffix: GB
+                    options:
+                        maximumFractionDigits: 0
+            -   label: HDD Disk
+                query: 'node_filesystem_free_bytes{mountpoint=~"/mnt/hdd" ,fstype!~"tmpfs|overlay",instance="pi4"}  / 1073741824'
+                format:
+                    type: number
+                    suffix: GB
+                    options:
+                        maximumFractionDigits: 0
 
 - Dashboard Nuc:
-    - IntelNuc:
+    - Intel Nuc:
         widget:
             type: iframe
             name: myiframe
@@ -88,7 +117,7 @@
             src: https://k8s.proxmox.homelab/grafana/public-dashboards/1c9275d021fb436a976bb25065c55eed
 
 - Dashboard RaspberryPi:
-    - RaspberryPi:
+    - Raspberry Pi:
         widget:
             type: iframe
             name: myiframe
@@ -97,6 +126,16 @@
 
 
 - Monitoring:
+    - Proxmox:
+        href: https://pve.proxmox.homelab:8006
+        description: Virtualization platform
+        icon: sh-proxmox
+        widget:
+            type: proxmox
+            url: https://pve.proxmox.homelab:8006
+            username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
+            password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
+            fields: ["vms", "resources.cpu", "resources.mem"]
     - Grafana:
         href: https://k8s.proxmox.homelab/grafana/
         description: Analytics and monitoring platform
@@ -144,27 +183,27 @@
             type: changedetectionio
             url: http://detector-changedetection.default.svc.cluster.local:5000
             key: {{HOMEPAGE_VAR_CHANGEDETECTION_KEY}}
-    - Calibre:
-        href: https://calibre.proxmox.homelab
-        description: E-book management
-        icon: sh-calibre.png
-        widget:
-            type: calibreweb
-            url: http://calibre-application.default.svc.cluster.local:3000
-            username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
-            password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
     # - Maybe Finance:
     #     href: https://maybe.proxmox.local
     #     description: Personal finance management
     #     icon: sh-maybe
-    - AdventureLog:
-        href: https://adventurelog.proxmox.homelab
-        description: Trip planning and tracking
-        icon: sh-adventurelog
+    - Paperless:
+        href: https://paperless.proxmox.homelab/
+        description: Document management system
+        icon: si-paperlessngx-#17541F
+    - Actual:
+        href: https://actual.proxmox.homelab/budget
+        description: Personal finance management
+        icon: si-actualbudget-#6B46C1
     - Glance:
         href: https://gateway.proxmox.homelab/glance
         description: Personal dashboard
         icon: sh-glance
+    - AdventureLog:
+        href: https://adventurelog.proxmox.homelab
+        description: Trip planning and tracking
+        icon: sh-adventurelog
+
 
 - Storage:
     - Nextcloud:
@@ -187,6 +226,15 @@
             key: {{HOMEPAGE_VAR_IMMICH_KEY}}
             version: 2
             fields: [ "photos", "videos", "storage"]
+    - Calibre:
+        href: https://calibre.proxmox.homelab
+        description: E-book management
+        icon: sh-calibre.png
+        widget:
+            type: calibreweb
+            url: http://calibre-application.default.svc.cluster.local:3000
+            username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
+            password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
     - Harbor:
         href: https://harbor.proxmox.homelab
         description: Docker Image registry
@@ -195,18 +243,6 @@
         href: https://minio.proxmox.homelab
         icon: sh-minio
         description: S3 Object storage
-
-- Infrastructure:
-    - Proxmox:
-        href: https://pve.proxmox.homelab:8006
-        description: Virtualization platform
-        icon: sh-proxmox
-        widget:
-            type: proxmox
-            url: https://pve.proxmox.homelab:8006
-            username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
-            password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
-            fields: ["vms", "resources.cpu", "resources.mem"]
 
 - Tools:
     - ArgoCD:
@@ -217,7 +253,14 @@
             type: argocd
             url: https://argo.proxmox.homelab
             key: {{HOMEPAGE_VAR_ARGOCD_KEY}}
-
+    - Linkwarden:
+        href: https://linkwarden.proxmox.homelab
+        description: Bookmark management
+        icon: sh-linkwarden
+        widget:
+            type: linkwarden
+            url: https://linkwarden.proxmox.homelab
+            key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}}
     - DevOps Toolchain:
         href: https://gateway.proxmox.homelab/toolchain/
         description: HomeLab Infrastructure and Deployment
@@ -230,14 +273,7 @@
         href: https://n8n-automation.proxmox.homelab/
         description: Workflow automation
         icon: sh-n8n
-    - Linkwarden:
-        href: https://linkwarden.proxmox.homelab
-        description: Bookmark management
-        icon: sh-linkwarden
-        widget:
-            type: linkwarden
-            url: https://linkwarden.proxmox.homelab
-            key: {{HOMEPAGE_VAR_LINKWARDEN_KEY}}
+
 
 - Networking:
     - opnsense:
