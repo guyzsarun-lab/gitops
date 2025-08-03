@@ -8,7 +8,7 @@
         href: https://pve.proxmox.homelab:8006
         description: Intel NUC 12 i5 / 64GB
         icon: sh-proxmox
-        widgets:
+        widget:
         -   type: prometheusmetric
             url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
