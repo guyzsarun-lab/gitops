@@ -9,7 +9,7 @@
         description: Intel NUC 12 i5 / 64GB
         icon: sh-proxmox
         widget:
-        -   type: prometheusmetric
+            type: prometheusmetric
             url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
