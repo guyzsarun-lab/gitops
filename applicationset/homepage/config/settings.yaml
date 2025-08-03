@@ -13,14 +13,12 @@ layout:
   Hardware:
     tab: Main
     style: row
-    columns: 2
+    columns: 3
   Applications:
     tab: Main
   Storage:
     tab: Main
   Monitoring:
-    tab: Main
-  Infrastructure:
     tab: Main
   Tools:
     tab: Main
