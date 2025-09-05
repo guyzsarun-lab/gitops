@@ -1,7 +1,5 @@
 kube-prometheus-stack:
   grafana:
-    plugins:
-    - grafana-image-renderer
     adminPassword: password
     assertNoLeakedSecrets: false
     resources:
@@ -52,6 +50,10 @@ kube-prometheus-stack:
           tls_skip_verify_insecure: true
           allow_assign_grafana_admin : true
           role_attribute_path : contains(realm_access.roles[*], 'grafanaadmin') && 'GrafanaAdmin' || contains(realm_access.roles[*], 'admin') && 'Admin' || contains(realm_access.roles[*], 'editor') && 'Editor' || 'Viewer'
+
+
+  imageRenderer:
+    enabled: true
 
   prometheusOperator:
     prometheusConfigReloader:
