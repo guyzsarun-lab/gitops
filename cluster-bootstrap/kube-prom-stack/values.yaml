@@ -35,6 +35,8 @@ kube-prometheus-stack:
         enable_alpha: true
       security:
         allow_embedding: true
+      unified_alerting.screenshots:
+        capture: true
       auth.generic_oauth:
           enabled : true
           name : Keycloak-OIDC
