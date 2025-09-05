@@ -1,5 +1,7 @@
 kube-prometheus-stack:
   grafana:
+    plugins:
+    - grafana-image-renderer
     adminPassword: password
     assertNoLeakedSecrets: false
     resources:
