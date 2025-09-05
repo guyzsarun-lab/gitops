@@ -55,6 +55,7 @@ kube-prometheus-stack:
       enabled: true
       image:
         tag: v4.0.11
+      grafanaSubPath: /grafana
       env:
         IGNORE_HTTPS_ERRORS: true
 
