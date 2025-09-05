@@ -26,6 +26,8 @@ kube-prometheus-stack:
           memory: 50Mi
 
     grafana.ini:
+      rendering:
+        renderer_token: testtoken
       server:
         root_url: https://k8s.proxmox.homelab/grafana
         serve_from_sub_path: true
@@ -55,9 +57,10 @@ kube-prometheus-stack:
       enabled: true
       image:
         tag: v4.0.11
-      grafanaSubPath: /grafana
+      grafanaSubPath: grafana
       env:
         IGNORE_HTTPS_ERRORS: true
+        AUTH_TOKEN: testtoken
 
   prometheusOperator:
     prometheusConfigReloader:
