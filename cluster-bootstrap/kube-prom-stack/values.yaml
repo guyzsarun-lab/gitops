@@ -53,6 +53,10 @@ kube-prometheus-stack:
 
     imageRenderer:
       enabled: true
+      image:
+        tag: v4.0.11
+      env:
+        IGNORE_HTTPS_ERRORS: true
 
   prometheusOperator:
     prometheusConfigReloader:
