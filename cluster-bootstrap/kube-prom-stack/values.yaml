@@ -61,7 +61,6 @@ kube-prometheus-stack:
       env:
         IGNORE_HTTPS_ERRORS: true
         AUTH_TOKEN: testtoken
-        LOG_LEVEL: debug
 
   prometheusOperator:
     prometheusConfigReloader:
