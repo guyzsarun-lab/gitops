@@ -9,7 +9,7 @@ namePrefix: linkwarden-
 images:
 - name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/linkwarden/linkwarden
-  newTag: v2.11.5
+  newTag: v2.12.2
 commonLabels:
   app: linkwarden
 patches:
