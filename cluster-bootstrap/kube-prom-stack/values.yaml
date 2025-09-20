@@ -61,6 +61,7 @@ kube-prometheus-stack:
       env:
         IGNORE_HTTPS_ERRORS: true
         AUTH_TOKEN: testtoken
+        BROWSER_TZ: Asia/Bangkok
 
   prometheusOperator:
     prometheusConfigReloader:
