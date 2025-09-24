@@ -123,7 +123,7 @@ kube-prometheus-stack:
               - nfs.proxmox.homelab:9100
               - app.proxmox.homelab:9100
             - targets:
-              - 10.243.199.158:9100
+              - 192.168.1.218:9100
               labels:
                 instance: 'pi4'
 
