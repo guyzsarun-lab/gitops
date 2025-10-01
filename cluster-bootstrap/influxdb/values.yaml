@@ -26,4 +26,5 @@ influxdb2:
 
     existingSecret: influxdb-secret
 
-  livenessProbe: {}
+  livenessProbe:
+    failureThreshold: 10
