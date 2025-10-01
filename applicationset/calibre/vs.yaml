@@ -7,6 +7,7 @@ spec:
   - istio-system/default-gateway
   hosts:
   - calibre.proxmox.homelab
+  - calibre.guyzsarun.xyz
   http:
   - route:
     - destination:
