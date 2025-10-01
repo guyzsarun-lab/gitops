@@ -25,3 +25,5 @@ influxdb2:
     user: "admin"
 
     existingSecret: influxdb-secret
+
+  livenessProbe: {}
