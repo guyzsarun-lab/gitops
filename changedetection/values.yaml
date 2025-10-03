@@ -42,13 +42,15 @@ playwrightSidecar:
     value: "300000"
   - name: DEFAULT_BLOCK_ADS
     value: "true"
+  - name: ENABLE_DEBUGGER
+    value: "false"
 
   resources:
     limits:
-      cpu: 100m
-      memory: 1.5Gi
+      cpu: 1
+      memory: 2Gi
     requests:
-      cpu: 100m
+      cpu: 500m
       memory: 128Mi
 
 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
