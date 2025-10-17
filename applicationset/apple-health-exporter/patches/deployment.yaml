@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        resources:
+          limits:
+            memory: 128Mi
+        envFrom:
+        - secretRef:
+            name: apple-health-exporter-secret
+        ports:
+        - $patch: replace
+        - containerPort: 7788
