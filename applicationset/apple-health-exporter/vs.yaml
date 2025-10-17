@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: vs
+spec:
+  gateways:
+  - istio-system/http-gateway
+  hosts:
+  - k8s.proxmox.homelab
+  http:
+  - match:
+    - uri:
+        prefix: /upload/
+    - uri:
+        prefix: /upload
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: apple-health-exporter-application
+        port:
+          number: 3000
