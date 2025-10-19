@@ -116,6 +116,14 @@ kube-prometheus-stack:
             - targets:
               - server.proxmox.homelab:9000
 
+        - job_name: vault
+          metrics_path: /v1/sys/metrics
+          params:
+            format: ['prometheus']
+          scheme: http
+          static_configs:
+          - targets: ['vault.proxmox.homelab']
+
         - job_name: 'node-exporter'
           static_configs:
             - targets:
