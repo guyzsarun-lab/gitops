@@ -8,47 +8,15 @@
 set -e
 
 PATTERN="${1:-*.yaml}"
-MIN_SIMILARITY=70  # Minimum similarity percentage to report
 
 echo "Finding similar files matching pattern: $PATTERN"
-echo "Minimum similarity threshold: ${MIN_SIMILARITY}%"
 echo "---"
-
-# Find all matching files
-FILES=$(find . -name "$PATTERN" -type f ! -path "./.git/*" ! -path "./k8s-templates/*" | sort)
-
-# Function to calculate simple similarity based on line overlap
-# This is a simplified approach - for production use, consider using proper diff tools
-compare_files() {
-    local file1="$1"
-    local file2="$2"
-    
-    # Get total lines in both files (excluding empty lines)
-    local lines1=$(grep -c ^ "$file1" || echo 0)
-    local lines2=$(grep -c ^ "$file2" || echo 0)
-    
-    if [ "$lines1" -eq 0 ] || [ "$lines2" -eq 0 ]; then
-        echo 0
-        return
-    fi
-    
-    # Count common lines
-    local common=$(comm -12 <(sort "$file1") <(sort "$file2") | grep -c ^ || echo 0)
-    local avg_lines=$(( (lines1 + lines2) / 2 ))
-    
-    # Calculate similarity percentage
-    if [ "$avg_lines" -gt 0 ]; then
-        local similarity=$(( (common * 100) / avg_lines ))
-        echo "$similarity"
-    else
-        echo 0
-    fi
-}
 
 # Group files by name pattern
 declare -A file_groups
 
-for file in $FILES; do
+# Use proper file handling with null delimiters
+while IFS= read -r -d '' file; do
     basename_file=$(basename "$file")
     
     # Group by filename (vs.yaml, volume.yaml, etc.)
@@ -56,21 +24,23 @@ for file in $FILES; do
         file_groups["$basename_file"]=""
     fi
     file_groups["$basename_file"]+="$file "
-done
+done < <(find . -name "$PATTERN" -type f ! -path "./.git/*" ! -path "./k8s-templates/*" -print0 | sort -z)
 
 # Report on groups with multiple files
 echo "File groups with potential duplication:"
 echo ""
 
 for name in "${!file_groups[@]}"; do
-    files_array=(${file_groups[$name]})
+    # Read files into array safely
+    IFS=' ' read -r -a files_array <<< "${file_groups[$name]}"
     count=${#files_array[@]}
     
     if [ "$count" -gt 1 ]; then
         echo "Group: $name (${count} files)"
         
         # Show first few files as examples
-        for ((i=0; i<${count} && i<5; i++)); do
+        display_count=$((count < 5 ? count : 5))
+        for ((i=0; i<display_count; i++)); do
             echo "  - ${files_array[$i]}"
         done
         
