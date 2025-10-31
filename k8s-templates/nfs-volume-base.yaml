@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv
+  name: <app-name>-pv
 spec:
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
-  storageClassName: app-storage
+  storageClassName: <app-name>-storage
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
@@ -14,15 +14,15 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /home/devops/nfs_share/app
+    path: /home/devops/nfs_share/<app-name>
     server: nfs.proxmox.homelab
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc
+  name: <app-name>-pvc
 spec:
-  storageClassName: app-storage
+  storageClassName: <app-name>-storage
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem

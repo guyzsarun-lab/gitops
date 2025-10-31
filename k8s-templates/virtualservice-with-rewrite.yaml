@@ -6,15 +6,15 @@ spec:
   gateways:
   - istio-system/default-gateway
   hosts:
-  - placeholder.proxmox.homelab
+  - <gateway>.proxmox.homelab
   http:
   - match:
     - uri:
-        prefix: /app
+        prefix: /<app-path>
     rewrite:
       uri: /
     route:
     - destination:
-        host: application.default.svc.cluster.local
+        host: <app-name>-application.default.svc.cluster.local
         port:
           number: 3000
