@@ -59,7 +59,7 @@ echo "Patch files (potential for consolidation):"
 find . -path "*/patches/*.yaml" ! -path "./.git/*" -print0 | while IFS= read -r -d '' file; do
     basename_file=$(basename "$file")
     echo "  - $file ($basename_file)"
-done | sort -k3
+done | sort -k2
 
 echo ""
 echo "---"
