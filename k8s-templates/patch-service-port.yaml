@@ -1,0 +1,14 @@
+# Example patch to change service target port
+# Copy to applicationset/<app>/patches/service.yaml and customize
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: application
+  name: application
+spec:
+  ports:
+  - $patch: replace
+  - port: 3000
+    protocol: TCP
+    targetPort: 8080  # Change to your application's port

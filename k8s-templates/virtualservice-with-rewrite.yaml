@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vs
+spec:
+  gateways:
+  - istio-system/default-gateway
+  hosts:
+  - placeholder.proxmox.homelab
+  http:
+  - match:
+    - uri:
+        prefix: /app
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: application.default.svc.cluster.local
+        port:
+          number: 3000
