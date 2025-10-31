@@ -12,36 +12,37 @@ PATTERN="${1:-*.yaml}"
 echo "Finding similar files matching pattern: $PATTERN"
 echo "---"
 
-# Group files by name pattern
-declare -A file_groups
+# Create a temporary directory for grouping files
+tmpdir=$(mktemp -d)
+trap 'rm -rf "$tmpdir"' EXIT
 
-# Use proper file handling with null delimiters
+# First pass: collect all files and group by basename
+find . -name "$PATTERN" -type f ! -path "./.git/*" ! -path "./k8s-templates/*" -print0 | \
 while IFS= read -r -d '' file; do
     basename_file=$(basename "$file")
-    
-    # Group by filename (vs.yaml, volume.yaml, etc.)
-    if [[ ! -v file_groups["$basename_file"] ]]; then
-        file_groups["$basename_file"]=""
-    fi
-    file_groups["$basename_file"]+="$file "
-done < <(find . -name "$PATTERN" -type f ! -path "./.git/*" ! -path "./k8s-templates/*" -print0 | sort -z)
+    # Create a list file for each basename
+    echo "$file" >> "$tmpdir/$basename_file.list"
+done
 
 # Report on groups with multiple files
 echo "File groups with potential duplication:"
 echo ""
 
-for name in "${!file_groups[@]}"; do
-    # Read files into array safely
-    IFS=' ' read -r -a files_array <<< "${file_groups[$name]}"
-    count=${#files_array[@]}
+for list_file in "$tmpdir"/*.list; do
+    [ -f "$list_file" ] || continue
+    
+    # Get the basename from the list filename
+    name=$(basename "$list_file" .list)
+    
+    # Count files in this group
+    count=$(wc -l < "$list_file")
     
     if [ "$count" -gt 1 ]; then
         echo "Group: $name (${count} files)"
         
         # Show first few files as examples
-        display_count=$((count < 5 ? count : 5))
-        for ((i=0; i<display_count; i++)); do
-            echo "  - ${files_array[$i]}"
+        head -5 "$list_file" | while IFS= read -r file; do
+            echo "  - $file"
         done
         
         if [ "$count" -gt 5 ]; then
