@@ -9,7 +9,7 @@ namePrefix: paperless-
 images:
 - name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/paperless-ngx/paperless-ngx
-  newTag: 2.17.1
+  newTag: 2.19.3
 commonLabels:
   app: paperless
 patches:
