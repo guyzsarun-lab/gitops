@@ -7,4 +7,7 @@ WORKDIR /app
 
 RUN pip install apprise
 
+RUN adduser -S appuser
+USER appuser
+
 ENTRYPOINT [ "apprise" ]
