@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-telegram-notification-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: telegram-notification
+        image: ghcr.io/guyzsarun-lab/apprise:0.0.1
+        command:
+          - apprise
+          - -vv
+          - -t '✅ Successfully deployed CyberChef'
+          - -b 'my notification body'
+          - '$(TELEGRAM_URL)'
+        env:
+          - name: TELEGRAM_URL
+            valueFrom:
+              secretKeyRef:
+                name: apprise-channel
+                key: telegram
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: image-pull-secret
+  backoffLimit: 2
