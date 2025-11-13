@@ -18,6 +18,7 @@ spec:
           - apprise
           - -vv
           - -t '✅ Successfully deployed CyberChef'
+          - -b ''
           - '$(TELEGRAM_URL)'
         env:
           - name: TELEGRAM_URL
