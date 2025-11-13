@@ -7,6 +7,9 @@ metadata:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: telegram-notification
@@ -15,7 +18,6 @@ spec:
           - apprise
           - -vv
           - -t '✅ Successfully deployed CyberChef'
-          - -b 'my notification body'
           - '$(TELEGRAM_URL)'
         env:
           - name: TELEGRAM_URL
