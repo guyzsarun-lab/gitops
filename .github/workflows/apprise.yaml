@@ -1,0 +1,15 @@
+name: apprise
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - applicationset/apprise/**
+
+jobs:
+  docker-build:
+    uses: ./.github/workflows/reusable-docker-build.yaml
+    with:
+      path: applicationset/apprise
