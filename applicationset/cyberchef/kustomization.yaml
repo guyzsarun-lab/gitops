@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../base
 - vs.yaml
+- post-hook.yaml
 namePrefix: cyberchef-
 images:
 - name: ghcr.io/guyzsarun-lab/base
