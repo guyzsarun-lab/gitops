@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN pip install apprise
 
-RUN adduser -S appuser
+RUN adduser -D -H -s /sbin/nologin appuser
 USER appuser
 
 ENTRYPOINT [ "apprise" ]
