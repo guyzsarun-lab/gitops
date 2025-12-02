@@ -20,9 +20,22 @@ This repository follows the GitOps workflow to manage Kubernetes deployments. Al
 ├── applicationset      # argocd applicationset generator
 │   ├── base            # base kustomize template
 │   └── ...     
+├── k8s-templates       # reusable kubernetes resource templates
 |
 └──  changedetection    # argocd managed application
 ```
+
+## Adding a New Application
+
+To add a new application to the repository:
+
+1. **Copy an existing application** from `applicationset/` that matches your needs
+2. **Customize the configuration** (see [k8s-templates/README.md](k8s-templates/README.md) for common patterns)
+3. **Test your kustomization**: `kubectl kustomize applicationset/myapp`
+4. **Create a workflow** (optional): Copy one of the existing `.github/workflows/*.yaml` files if you need to build a custom Docker image
+5. **Commit and let ArgoCD sync** your changes
+
+For detailed templates and examples, see [k8s-templates/README.md](k8s-templates/README.md).
 
 ## Deployment
 
