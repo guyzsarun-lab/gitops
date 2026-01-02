@@ -16,7 +16,7 @@ layout:
     columns: 3
   Applications:
     tab: Main
-  Storage:
+  Media and Storage:
     tab: Main
   Monitoring:
     tab: Main

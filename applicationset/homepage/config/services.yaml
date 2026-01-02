@@ -205,7 +205,7 @@
         icon: sh-adventurelog
 
 
-- Storage:
+- Media and Storage:
     - Nextcloud:
         href: https://nextcloud.proxmox.homelab
         description: File storage and sharing
@@ -235,6 +235,10 @@
             url: http://calibre-application.default.svc.cluster.local:3000
             username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
             password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
+    - Audiobookshelf:
+        href: https://audiobook.proxmox.homelab
+        description: Audiobook management
+        icon: sh-audiobookshelf
     - Harbor:
         href: https://harbor.proxmox.homelab
         description: Docker Image registry
