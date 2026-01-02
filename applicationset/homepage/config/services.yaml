@@ -276,6 +276,15 @@
 
 
 - Networking:
+    - adguard:
+        href: http://adguard.proxmox.homelab
+        description: Network-wide ad blocker
+        icon: sh-adguard-home
+        widget:
+            type: adguard
+            url: {{HOMEPAGE_VAR_ADGUARD_URL}}
+            username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
+            password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
     - opnsense:
         href: https://opnsense.proxmox.homelab
         description: Firewall and routing
