@@ -187,10 +187,6 @@
     #     href: https://maybe.proxmox.local
     #     description: Personal finance management
     #     icon: sh-maybe
-    - Paperless:
-        href: https://paperless.proxmox.homelab/
-        description: Document management system
-        icon: si-paperlessngx-#17541F
     - Actual:
         href: https://actual.proxmox.homelab/budget
         description: Personal finance management
@@ -239,6 +235,10 @@
         href: https://audiobook.proxmox.homelab
         description: Audiobook management
         icon: sh-audiobookshelf
+    - Paperless:
+        href: https://paperless.proxmox.homelab/
+        description: Document management system
+        icon: si-paperlessngx-#17541F
     - Harbor:
         href: https://harbor.proxmox.homelab
         description: Docker Image registry
