@@ -235,6 +235,10 @@
             url: http://calibre-application.default.svc.cluster.local:3000
             username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
             password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
+    - Booklore:
+        href: https://booklore.proxmox.homelab
+        description: E-book management
+        icon: sh-booklore
     - Audiobookshelf:
         href: https://audiobook.proxmox.homelab
         description: Audiobook management
