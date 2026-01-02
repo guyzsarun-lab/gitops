@@ -285,6 +285,10 @@
         href: https://n8n-automation.proxmox.homelab/
         description: Workflow automation
         icon: sh-n8n
+    - qBittorrent:
+        href: https://qbittorrent.proxmox.homelab
+        icon: sh-qbittorrent
+        description: Torrent client
 
 
 - Networking:
