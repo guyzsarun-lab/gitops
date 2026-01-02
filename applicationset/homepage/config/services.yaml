@@ -187,10 +187,6 @@
     #     href: https://maybe.proxmox.local
     #     description: Personal finance management
     #     icon: sh-maybe
-    - Paperless:
-        href: https://paperless.proxmox.homelab/
-        description: Document management system
-        icon: si-paperlessngx-#17541F
     - Actual:
         href: https://actual.proxmox.homelab/budget
         description: Personal finance management
@@ -205,7 +201,7 @@
         icon: sh-adventurelog
 
 
-- Storage:
+- Media and Storage:
     - Nextcloud:
         href: https://nextcloud.proxmox.homelab
         description: File storage and sharing
@@ -226,6 +222,10 @@
             key: {{HOMEPAGE_VAR_IMMICH_KEY}}
             version: 2
             fields: [ "photos", "videos", "storage"]
+    - Homebox:
+        href: https://homebox.proxmox.homelab
+        description: Inventory management
+        icon: sh-homebox
     - Calibre:
         href: https://calibre.proxmox.homelab
         description: E-book management
@@ -235,6 +235,18 @@
             url: http://calibre-application.default.svc.cluster.local:3000
             username: {{HOMEPAGE_VAR_CALIBRE_USERNAME}}
             password: {{HOMEPAGE_VAR_CALIBRE_PASSWORD}}
+    - Booklore:
+        href: https://booklore.proxmox.homelab
+        description: E-book management
+        icon: sh-booklore
+    - Audiobookshelf:
+        href: https://audiobook.proxmox.homelab
+        description: Audiobook management
+        icon: sh-audiobookshelf
+    - Paperless:
+        href: https://paperless.proxmox.homelab/
+        description: Document management system
+        icon: si-paperlessngx-#17541F
     - Harbor:
         href: https://harbor.proxmox.homelab
         description: Docker Image registry
@@ -273,9 +285,22 @@
         href: https://n8n-automation.proxmox.homelab/
         description: Workflow automation
         icon: sh-n8n
+    - qBittorrent:
+        href: https://qbittorrent.proxmox.homelab
+        icon: sh-qbittorrent
+        description: Torrent client
 
 
 - Networking:
+    - adguard:
+        href: http://adguard.proxmox.homelab
+        description: Network-wide ad blocker
+        icon: sh-adguard-home
+        widget:
+            type: adguard
+            url: {{HOMEPAGE_VAR_ADGUARD_URL}}
+            username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
+            password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
     - opnsense:
         href: https://opnsense.proxmox.homelab
         description: Firewall and routing
