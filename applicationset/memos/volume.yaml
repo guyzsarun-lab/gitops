@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: 10Gi
   volumeMode: Filesystem
-  storageClassName: paperless
+  storageClassName: memos
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
