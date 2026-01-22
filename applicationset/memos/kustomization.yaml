@@ -8,7 +8,7 @@ namePrefix: memos-
 images:
   - name: ghcr.io/guyzsarun-lab/base
     newName: neosmemo/memos
-    newTag: 0.25
+    newTag: "0.25"
 commonLabels:
   app: memos
 patches:
