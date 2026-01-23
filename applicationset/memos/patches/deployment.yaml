@@ -10,7 +10,6 @@ spec:
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
-              subPath: memos
           env:
             - name: MEMOS_MODE
               value: "prod"
