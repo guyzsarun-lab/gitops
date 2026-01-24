@@ -10,6 +10,10 @@ spec:
           volumeMounts:
             - name: memos-data
               mountPath: /var/opt/memos
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
           env:
             - name: MEMOS_MODE
               value: "prod"
