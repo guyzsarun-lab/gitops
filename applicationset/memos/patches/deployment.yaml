@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+        - name: application
+          volumeMounts:
+            - name: memos-data
+              mountPath: /var/opt/memos
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+          env:
+            - name: MEMOS_MODE
+              value: "prod"
+      volumes:
+        - name: memos-data
+          persistentVolumeClaim:
+            claimName: pvc
