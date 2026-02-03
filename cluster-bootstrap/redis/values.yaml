@@ -8,5 +8,5 @@ redis:
       enabled: false
   image:
     registry: docker.io
-    repository: library/redis
+    repository: bitnamilegacy/redis
     tag: 8.2.3-alpine
