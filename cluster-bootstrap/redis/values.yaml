@@ -9,7 +9,7 @@ redis:
   image:
     registry: docker.io
     repository: bitnamilegacy/redis
-    tag: 8.2.3-alpine
+    tag: 8.2.1
   global:
     security:
       allowInsecureImages: true
