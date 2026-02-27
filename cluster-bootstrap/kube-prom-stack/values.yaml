@@ -97,10 +97,20 @@ kube-prometheus-stack:
                 storage: 5Gi
 
       additionalScrapeConfigs:
-        - job_name: 'proxmox-ve'
+        - job_name: 'hypervisor'
           static_configs:
             - targets:
-              - 10.243.100.160:9100
+              - 192.168.1.100:9100
+              labels:
+                instance: 'pve-dc'
+            - targets:
+              - 192.168.3.200:9100
+              labels:
+                instance: 'pve-dr'
+            - targets:
+              - 192.168.1.218:9100
+              labels:
+                instance: 'pi4'
 
         - job_name: minio-cluster
           metrics_path: /minio/v2/metrics/cluster
@@ -130,10 +140,6 @@ kube-prometheus-stack:
               - server.proxmox.homelab:9100
               - nfs.proxmox.homelab:9100
               - app.proxmox.homelab:9100
-            - targets:
-              - 192.168.1.218:9100
-              labels:
-                instance: 'pi4'
 
         - job_name: 'kong-gateway'
           static_configs:
