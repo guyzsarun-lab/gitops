@@ -140,6 +140,7 @@ kube-prometheus-stack:
               - server.proxmox.homelab:9100
               - nfs.proxmox.homelab:9100
               - app.proxmox.homelab:9100
+              - media-server.proxmox.homelab:9100
 
         - job_name: 'kong-gateway'
           static_configs:
