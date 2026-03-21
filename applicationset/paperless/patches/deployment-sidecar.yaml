@@ -24,6 +24,21 @@ spec:
         - name: paperless-data
           mountPath: /usr/src/paperless/media
           subPath: media
+        env:
+        - name: PAPERLESS_TIKA_ENABLED
+          value: "1"
+        - name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+          value: http://localhost:3000
+        - name: PAPERLESS_TIKA_ENDPOINT
+          value: http://localhost:9998
+      - name: gotenberg
+        image: docker.io/gotenberg/gotenberg:8.25
+        command:
+          - "gotenberg"
+          - "--chromium-disable-javascript=true"
+          - "--chromium-allow-list=file:///tmp/.*"
+      - name: tika
+        image: docker.io/apache/tika:3.2.3.0
       volumes:
       - name: paperless-data
         persistentVolumeClaim:
