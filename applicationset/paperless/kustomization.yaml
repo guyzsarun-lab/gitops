@@ -9,11 +9,11 @@ namePrefix: paperless-
 images:
 - name: ghcr.io/guyzsarun-lab/base
   newName: ghcr.io/paperless-ngx/paperless-ngx
-  newTag: 2.19.3
+  newTag: 2.20.12
 commonLabels:
   app: paperless
 patches:
 - path: patches/deployment-secret.yaml
-- path: patches/deployment-memory.yaml
+- path: patches/deployment-sidecar.yaml
 - path: patches/deployment-probe.yaml
 - path: patches/service.yaml
