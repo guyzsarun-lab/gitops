@@ -139,6 +139,13 @@ kube-prometheus-stack:
             - targets:
               - 172.27.0.29:4001
 
+        - job_name: 'jetson'
+          scrape_interval: 30s
+          static_configs:
+            - targets:
+              - jetson-orin.proxmox.homelab:9100
+
+
         - job_name: 'node-exporter'
           static_configs:
             - targets:
