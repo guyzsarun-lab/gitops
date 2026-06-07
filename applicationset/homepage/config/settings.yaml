@@ -13,10 +13,12 @@ layout:
   Hardware:
     tab: Main
     style: row
-    columns: 3
+    columns: 4
   Applications:
     tab: Main
-  Media and Storage:
+  Media:
+    tab: Main
+  Documents:
     tab: Main
   Monitoring:
     tab: Main
