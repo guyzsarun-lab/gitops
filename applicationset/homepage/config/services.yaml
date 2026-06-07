@@ -3,42 +3,80 @@
 # https://gethomepage.dev/configs/services/
 
 - Hardware:
-    - Intel Nuc:
+    - Proxmox DC:
         ping: pve.proxmox.homelab
         href: https://pve.proxmox.homelab:8006
-        description: Intel NUC 12 i5 / 64GB
+        description: i5-1240P / 64GB
         icon: sh-proxmox
         widget:
             type: prometheusmetric
             url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
-            -   label: Temperature
-                query: 'avg(node_hwmon_temp_celsius{instance="10.243.100.160:9100"})'
+            -   label: Temp
+                query: 'avg(node_hwmon_temp_celsius{instance="pve-dc"})'
                 format:
                     type: number
                     suffix: '°C'
                     options:
                         maximumFractionDigits: 1
-            -   label: CPU Load
-                query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="10.243.100.160:9100"}[5m])) * 100)'
+            -   label: Load
+                query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="pve-dc"}[5m])) * 100)'
                 format:
                     type: number
                     suffix: '%'
                     options:
                         maximumFractionDigits: 1
             -   label: Memory
-                query: '100 * (1 - node_memory_MemAvailable_bytes{instance="10.243.100.160:9100"} / node_memory_MemTotal_bytes{instance="10.243.100.160:9100"})'
+                query: '100 * (1 - node_memory_MemAvailable_bytes{instance="pve-dc"} / node_memory_MemTotal_bytes{instance="pve-dc"})'
                 format:
                     type: number
                     suffix: '%'
                     options:
                         maximumFractionDigits: 0
             -   label: Disk
-                query: 'node_filesystem_free_bytes{fstype!~"tmpfs|overlay",instance="nfs.proxmox.homelab:9100"}  / 1073741824'
+                query: ((node_filesystem_size_bytes{instance="pve-dc", mountpoint="/"} - node_filesystem_avail_bytes{instance="pve-dc", mountpoint="/"})/ node_filesystem_size_bytes{instance="pve-dc", mountpoint="/"}) * 100
                 format:
                     type: number
-                    suffix: GB
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 0
+    - Proxmox DR:
+        ping: pve-dr.proxmox.homelab
+        href: https://pve-dr.proxmox.homelab:8006
+        description: i5-8500T / 8GB
+        icon: sh-proxmox
+        widget:
+            type: prometheusmetric
+            url: https://k8s.proxmox.homelab/prometheus
+            refreshInterval: 60000
+            metrics:
+            -   label: Temp
+                query: 'avg(node_hwmon_temp_celsius{instance="pve-dr"})'
+                format:
+                    type: number
+                    suffix: '°C'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Load
+                query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="pve-dr"}[5m])) * 100)'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 1
+            -   label: Memory
+                query: '100 * (1 - node_memory_MemAvailable_bytes{instance="pve-dr"} / node_memory_MemTotal_bytes{instance="pve-dr"})'
+                format:
+                    type: number
+                    suffix: '%'
+                    options:
+                        maximumFractionDigits: 0
+            -   label: Disk
+                query: ((node_filesystem_size_bytes{instance="pve-dr", mountpoint="/"} - node_filesystem_avail_bytes{instance="pve-dr", mountpoint="/"})/ node_filesystem_size_bytes{instance="pve-dr", mountpoint="/"}) * 100
+                format:
+                    type: number
+                    suffix: '%'
                     options:
                         maximumFractionDigits: 0
     - Raspberry Pi:
@@ -50,14 +88,14 @@
             url: https://k8s.proxmox.homelab/prometheus
             refreshInterval: 60000
             metrics:
-            -   label: Temperature
+            -   label: Temp
                 query: 'avg(node_hwmon_temp_celsius{instance="pi4"})'
                 format:
                     type: number
                     suffix: '°C'
                     options:
                         maximumFractionDigits: 1
-            -   label: CPU Load
+            -   label: Load
                 query: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle",instance="pi4"}[5m])) * 100)'
                 format:
                     type: number
@@ -72,10 +110,10 @@
                     options:
                         maximumFractionDigits: 0
             -   label: Disk
-                query: 'node_filesystem_free_bytes{mountpoint=~"/mnt/ssd1" ,fstype!~"tmpfs|overlay",instance="pi4"}  / 1073741824'
+                query: ((node_filesystem_size_bytes{instance="pi4", mountpoint="/"} - node_filesystem_avail_bytes{instance="pi4", mountpoint="/"})/ node_filesystem_size_bytes{instance="pi4", mountpoint="/"}) * 100
                 format:
                     type: number
-                    suffix: GB
+                    suffix: '%'
                     options:
                         maximumFractionDigits: 0
     - NAS:
