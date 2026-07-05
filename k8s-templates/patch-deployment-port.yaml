@@ -1,0 +1,14 @@
+# Example patch to change deployment container port
+# Copy to applicationset/<app>/patches/deployment.yaml and customize
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        ports:
+        - $patch: replace
+        - containerPort: 8080  # Change to your application's port

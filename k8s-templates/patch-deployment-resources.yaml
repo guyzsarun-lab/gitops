@@ -1,0 +1,15 @@
+# Example patch to set resource limits
+# Copy to applicationset/<app>/patches/deployment-memory.yaml and customize
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application
+spec:
+  template:
+    spec:
+      containers:
+      - name: application
+        resources:
+          limits:
+            memory: 256Mi  # Adjust based on application needs
+            cpu: 100m      # Adjust based on application needs
